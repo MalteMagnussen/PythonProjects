@@ -19,10 +19,11 @@
 import webget
 import sys
 from urllib.parse import urlparse
-# import logging # We haven't learned this yet?
 
-url1 = sys.argv[1]
-url2 = sys.argv[2]
-
-webget.download(url1)
-webget.download(url2)
+if (sys.stdin):
+    for link in sys.stdin.read().split('\n'):
+        webget.download(link)
+elif(sys.argv[1]):
+    webget.download(url1)
+    if(sys.argv[2]):
+        webget.download(url2)
