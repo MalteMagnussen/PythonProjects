@@ -1,6 +1,7 @@
 import os
 import urllib.request as req
 from urllib.parse import urlparse
+from .. import checkFile
 
 
 def download(url, to=None):
@@ -19,12 +20,14 @@ def download(url, to=None):
 
     if result.scheme and result.netloc and result.path:
         # IS URL
-        if (to == None):
-            fileName = os.path.basename(result.path)
-            # Should perhaps contain a check for whether or not the file exists locally already.
+        fileName = to
+        if (fileName != None):
+            if(checkFile(fileName)) return
             req.urlretrieve(url, fileName)
-        elif (to):
-            req.urlretrieve(url, to)
+        else:
+            fileName = os.path.basename(result.path)
+            if(checkFile(fileName)) return
+            req.urlretrieve(url, fileName)
         print("Attempting to retrieve doc from: "+url)
     else:
       # IS NOT URL
