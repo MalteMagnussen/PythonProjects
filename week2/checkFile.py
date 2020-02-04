@@ -1,5 +1,3 @@
-# How to import this module: from .. import checkFile
-
 import os
 
 
@@ -8,5 +6,7 @@ def checkFile(fileName):
     arr = os.listdir()
     for x in arr:
         if x == fileName:
-            return true:
-    return false
+            print("File already exists.")
+            return True
+    print("File doesn't yet exist. Creating file.")
+    return False
