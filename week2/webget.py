@@ -20,7 +20,9 @@ def download(url, to=None):
     if result.scheme and result.netloc and result.path:
         # IS URL
         if (to == None):
-            req.urlretrieve(url, os.path.basename(result.path))
+            fileName = os.path.basename(result.path)
+            # Should perhaps contain a check for whether or not the file exists locally already.
+            req.urlretrieve(url, fileName)
         elif (to):
             req.urlretrieve(url, to)
         print("Attempting to retrieve doc from: "+url)
