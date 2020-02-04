@@ -1,7 +1,7 @@
 import os
 import urllib.request as req
 from urllib.parse import urlparse
-from .. import checkFile
+import checkFile
 
 
 def download(url, to=None):
@@ -22,11 +22,13 @@ def download(url, to=None):
         # IS URL
         fileName = to
         if (fileName != None):
-            if(checkFile(fileName)) return
+            if(checkFile.checkFile(fileName)):
+                return
             req.urlretrieve(url, fileName)
         else:
             fileName = os.path.basename(result.path)
-            if(checkFile(fileName)) return
+            if(checkFile.checkFile(fileName)):
+                return
             req.urlretrieve(url, fileName)
         print("Attempting to retrieve doc from: "+url)
     else:
