@@ -1,5 +1,5 @@
 import webget
-import Book
+from Book import Book
 import Chapter
 import Paragraph
 import ComicBook
@@ -29,7 +29,7 @@ def get_text(lower_bound, upper_bound):
 # Test
 chapter_1 = Chapter.Chapter(1, 'Bones and Big Business', get_text(82, 762))
 chapter_2 = Chapter.Chapter(2, 'Hidden Treassure', get_text(769, 1455))
-book = Book.Book('Bones in London', 'Edgar Wallace', [chapter_1, chapter_2])
+book = Book('Bones in London', 'Edgar Wallace', [chapter_1, chapter_2])
 
 print(book.author)
 print(book.title)
