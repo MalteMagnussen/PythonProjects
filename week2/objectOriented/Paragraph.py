@@ -4,8 +4,17 @@ class Paragraph():
     def __init__(self, lines):
         """Initialize the paragraph with its lines of text."""
         self.lines = lines
+        self.reading_position = 0
 
     def read(self):
         """Simulate reading a paragraph by printing its contents."""
-        for line in self.lines:
-            print(line)
+        # for line in self.lines:
+        #     print(line)
+        print(self.lines[self.reading_position])
+
+    def get_reading_position(self):
+        return self.reading_position
+
+    def update_reading_position(self, new_position):
+        if new_position <= len(self.lines) - 1:
+            self.reading_position = new_position
