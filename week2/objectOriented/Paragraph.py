@@ -18,3 +18,15 @@ class Paragraph():
     def update_reading_position(self, new_position):
         if new_position <= len(self.lines) - 1:
             self.reading_position = new_position
+
+    def scroll_down(self):
+        if self.reading_position < len(self.lines) - 1:
+            self.reading_position += 1
+        else:
+            self.reading_position = 0
+
+    def scroll_up(self):
+        if self.reading_position >= 1:
+            self.reading_position -= 1
+        else:
+            self.reading_position = len(self.lines) - 1

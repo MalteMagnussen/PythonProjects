@@ -2,6 +2,7 @@ import webget
 import Book
 import Chapter
 import Paragraph
+import ComicBook
 
 bones_in_london_url = 'http://www.gutenberg.org/cache/epub/27525/pg27525.txt'
 # download the book
@@ -54,3 +55,44 @@ snd_paragraph = Paragraph.Paragraph([
     'exercise of his natural genius, had attained to the proprietorship of a',
     'bucket-shop.'])
 snd_paragraph.read()
+print(snd_paragraph.get_reading_position())
+
+snd_paragraph.update_reading_position(3)
+
+print(snd_paragraph.get_reading_position())
+
+snd_paragraph.read()
+
+print(" SCROLLING: _______________________")
+
+snd_paragraph.read()
+
+snd_paragraph.scroll_down()
+snd_paragraph.read()
+
+snd_paragraph.scroll_down()
+snd_paragraph.read()
+
+snd_paragraph.scroll_down()
+snd_paragraph.read()
+
+snd_paragraph.scroll_down()
+snd_paragraph.read()
+
+
+print("SCROLLING: __________________________")
+snd_paragraph.read()
+
+snd_paragraph.scroll_up()
+snd_paragraph.read()
+
+snd_paragraph.scroll_up()
+snd_paragraph.read()
+
+snd_paragraph.scroll_up()
+snd_paragraph.read()
+
+print("\n\nCOMIC BOOK: \n")
+
+comic = ComicBook.ComicBook('Le Grand Mort', 'Loisel')
+print(comic.title)
