@@ -1,3 +1,6 @@
+import Chapter
+
+
 class Book():
     """A simple book model consisting of chapters, which in 
     turn consist of paragraphs."""
