@@ -1,3 +1,6 @@
+import Paragraph
+
+
 class Chapter():
 
     def __init__(self, number, title, paragraphs):
@@ -6,11 +9,11 @@ class Chapter():
         self.title = title
         self.paragraphs = []
         for paragraph_lines in paragraphs:
-            new_pragraph = Paragraph(paragraph_lines)
+            new_pragraph = Paragraph.Paragraph(paragraph_lines)
             self.paragraphs.append(new_pragraph)
 
     def read(self, paragraph_idx=None):
-        """A paragraph can be read.""" 
+        """A paragraph can be read."""
         if paragraph_idx:
             self.paragraphs[paragraph_idx].read()
         else:
