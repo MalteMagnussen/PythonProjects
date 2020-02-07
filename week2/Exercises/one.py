@@ -69,3 +69,7 @@ def read_csv(input_file):
 # print("\n___________________________________________\nThird Test::\n")
 # filename = "iris_csv.csv"
 # print(read_csv(filename))
+
+# 2. Add a functionality so that the file can be called from cli with 2 arguments
+#   1. path to csv file
+#   2. an argument `--file file_name` that if given will write the content to file_name or otherwise will print it to the console.
