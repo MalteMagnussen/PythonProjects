@@ -20,10 +20,12 @@ import webget
 import sys
 from urllib.parse import urlparse
 
-if (sys.stdin):
-    for link in sys.stdin.read().split('\n'):
-        webget.download(link)
-elif(sys.argv[1]):
-    webget.download(url1)
-    if(sys.argv[2]):
-        webget.download(url2)
+
+if __name__ == '__main__':
+    if (sys.stdin):
+        for link in sys.stdin.read().split('\n'):
+            webget.download(link)
+    elif(sys.argv[1]):
+        webget.download(url1)
+        if(sys.argv[2]):
+            webget.download(url2)
