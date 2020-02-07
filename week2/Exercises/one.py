@@ -8,12 +8,13 @@
 #   1. path to csv file
 #   2. an argument `--file file_name` that if given will write the content to file_name or otherwise will print it to the console.
 # 3. Add a --help cli argument to describe how the module is used
+import csv
 
 
 def print_file_content(file):
     """1. `def print_file_content(file)` that can print content of a csv file to the console"""
     # It should be able to print content of a csv file to console.
-    import csv
+
     with open(filename) as f:
         reader = csv.reader(f)
 
@@ -41,12 +42,30 @@ def write_list_to_file(output_file, *args):
 
 
 # Testing write_list_to_file
-testStringOne = "First Line"
-testStringTwo = "Second Line"
-testStringThree = "Third Line"
+# testStringOne = "First Line"
+# testStringTwo = "Second Line"
+# testStringThree = "Third Line"
 
-filename = "testFile.txt"
+# filename = "testFile.txt"
 
-print("\n___________________________________________\nSecond Test::")
-write_list_to_file(filename, testStringOne, testStringTwo, testStringThree)
+# print("\n___________________________________________\nSecond Test::\n")
+# write_list_to_file(filename, testStringOne, testStringTwo, testStringThree)
 # ^Works
+
+# `def read_csv(input_file)` that take a csv file and read each row into a list
+
+
+def read_csv(input_file):
+    list = []
+    with open(input_file) as f:
+        reader = csv.reader(f)
+
+        for row in reader:
+            list.append(row)
+
+    return list
+
+
+# print("\n___________________________________________\nThird Test::\n")
+# filename = "iris_csv.csv"
+# print(read_csv(filename))
