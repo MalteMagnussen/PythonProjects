@@ -1,7 +1,7 @@
 import os
 import urllib.request as req
 from urllib.parse import urlparse
-import checkFile
+from PythonProjects.utils import checkFile
 
 
 def download(url, to=None):
