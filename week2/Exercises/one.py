@@ -8,6 +8,8 @@
 #   1. path to csv file
 #   2. an argument `--file file_name` that if given will write the content to file_name or otherwise will print it to the console.
 # 3. Add a --help cli argument to describe how the module is used
+from PythonProjects.utils import webget
+import argparse
 import csv
 
 
@@ -15,7 +17,7 @@ def print_file_content(file):
     """1. `def print_file_content(file)` that can print content of a csv file to the console"""
     # It should be able to print content of a csv file to console.
 
-    with open(filename) as f:
+    with open(file) as f:
         reader = csv.reader(f)
 
         for row in reader:
@@ -36,6 +38,7 @@ def write_list_to_file(output_file, *args):
     toFile = ""
     for x in args:
         toFile += x + "\n"
+
     with open(output_file, 'w') as file_object:
         print("Writing {} to {}".format(toFile, output_file))
         file_object.write(toFile)
@@ -73,3 +76,45 @@ def read_csv(input_file):
 # 2. Add a functionality so that the file can be called from cli with 2 arguments
 #   1. path to csv file
 #   2. an argument `--file file_name` that if given will write the content to file_name or otherwise will print it to the console.
+# Add a --help cli argument to describe how the module is used
+parser = argparse.ArgumentParser(
+    description='A program that can handle CSV')
+
+# Positional arg
+parser.add_argument('path', help='path to csv file')
+
+# Optional Arg [- , --]
+parser.add_argument('-f', '--file_name',
+                    help='if given will write the content to file_name or otherwise will print it to the console.')
+
+
+args = parser.parse_args()
+
+
+def listToString(s):
+    str1 = ","
+    return (str1.join(s))
+
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+
+    path = args.path
+
+    myContent = read_csv(path)
+
+    content = ""
+
+    for x in myContent:
+        content += listToString(x) + "\n"
+
+    if (args.file_name != None):
+        file_name = args.file_name
+        # write the content to file_name
+        with open(file_name, 'w') as file_object:
+
+            print("Writing {} to {}".format(content, file_name))
+            file_object.write(content)
+    else:
+        # Print it to console
+        print_file_content(path)
