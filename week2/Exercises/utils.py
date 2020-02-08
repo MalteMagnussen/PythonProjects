@@ -13,6 +13,8 @@ import os
 import openpyxl
 import csv
 import platform
+from pathlib import Path
+
 
 if platform.system() == 'Windows':
     newline = ''
@@ -44,4 +46,23 @@ def filenamesToFolder(pathToFolder, outputFile):
     with open(outputFile, 'w', newline=newline) as file_object:
         file_object.write('\n'.join(os.listdir(pathToFolder)))
 
-    return os.listdir(pathToFolder))
+    return os.listdir(pathToFolder)
+
+
+def allFileNames(path):
+    '''
+    2. second takes a path to a folder and write all filenames recursively (files of all sub folders to)
+
+    Parameters: 
+
+        path (str): The path to the root folder you want to get all filenames from.
+
+    '''
+
+    # Getting the current work directory (cwd)
+    thisdir = os.getcwd()
+
+    # r=root, d=directories, f = files
+    for r, d, f in os.walk(thisdir):
+        for file in f:
+            print(os.path.join(r, file))
