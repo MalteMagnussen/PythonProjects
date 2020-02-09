@@ -1,0 +1,4 @@
+myemail@gmail.com
+dontprintme
+dontprintmeeither
+another@email.com

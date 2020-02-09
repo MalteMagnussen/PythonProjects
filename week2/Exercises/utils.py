@@ -83,7 +83,7 @@ def printFirstLine(listOfFiles):
 
     for fileName in listOfFiles:
         with open(fileName) as file_object:
-            print(file_object.readlines().pop(0))
+            print(file_object.readlines().pop(0).rstrip())
 
 
 def findEmails(listOfFiles):
@@ -99,7 +99,7 @@ def findEmails(listOfFiles):
         with open(fileName) as file_object:
             for line in file_object.readlines():
                 if ("@" in line):
-                    print(line)
+                    print(line.rstrip())
 
 
 def getHeadlines(listOfMdFiles):
@@ -111,8 +111,8 @@ def getHeadlines(listOfMdFiles):
         listOfMdFiles (list): List of Filenames
     '''
 
-    for fileName in listOfFiles:
+    for fileName in listOfMdFiles:
         with open(fileName) as file_object:
             for line in file_object.readlines():
                 if (line[0] == "#"):
-                    print(line)
+                    print(line.rstrip())

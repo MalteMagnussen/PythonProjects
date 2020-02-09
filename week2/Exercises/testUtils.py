@@ -11,11 +11,19 @@ import os
 from utils import filenamesToFolder, allFileNames, printFirstLine, findEmails, getHeadlines
 
 # Test of number 1
-filenamesToFolder("PythonProjects/week2/Exercises",
-                  "PythonProjects/week2/Exercises/testFilenamesToFolder.txt")
+# filenamesToFolder("PythonProjects/week2/Exercises", "PythonProjects/week2/Exercises/testFilenamesToFolder.txt")
+
 # Test of number 2
 # allFileNames(os.getcwd)
+
 # Test of number 3
-listOfFiles = ["PythonProjects/week2/Exercises/testFilenamesToFolder.txt",
-               "PythonProjects/week2/Exercises/testFile.txt"]
-printFirstLine(listOfFiles)
+# printFirstLine(["PythonProjects/week2/Exercises/testFilenamesToFolder.txt",
+#                "PythonProjects/week2/Exercises/testFile.txt"])
+
+# Test of number 4
+# findEmails(["PythonProjects/week2/Exercises/moreEmails.txt",
+#             "PythonProjects/week2/Exercises/emails.txt"])
+
+# Test of number 5
+getHeadlines(["PythonProjects/week2/Exercises/one.md",
+              "PythonProjects/week2/Exercises/two.md"])
