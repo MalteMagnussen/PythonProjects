@@ -2,6 +2,7 @@ iris_csv.csv
 one.py
 testFile.txt
 testFilenamesToFolder.txt
+testUtils.py
 test_receiver.csv
 utils.py
 __init__.py

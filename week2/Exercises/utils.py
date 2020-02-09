@@ -66,3 +66,53 @@ def allFileNames(path):
     for r, d, f in os.walk(thisdir):
         for file in f:
             print(os.path.join(r, file))
+        for direct in d:
+            print(os.path.join(r, direct))
+
+
+# allFileNames(os.getcwd())
+
+def printFirstLine(listOfFiles):
+    """
+    third takes a list of filenames and print the first line of each
+
+    Parameters:
+
+        listOfFiles (list): List of Filenames
+    """
+
+    for fileName in listOfFiles:
+        with open(fileName) as file_object:
+            print(file_object.readlines().pop(0))
+
+
+def findEmails(listOfFiles):
+    '''
+    fourth takes a list of filenames and print each line that contains an email (just look for @)
+
+    Parameters:
+
+        listOfFiles (list): List of Filenames
+    '''
+
+    for fileName in listOfFiles:
+        with open(fileName) as file_object:
+            for line in file_object.readlines():
+                if ("@" in line):
+                    print(line)
+
+
+def getHeadlines(listOfMdFiles):
+    '''
+    fifth takes a list of md files and writes all headlines (lines starting with #) to a file
+
+    Parameters:
+
+        listOfMdFiles (list): List of Filenames
+    '''
+
+    for fileName in listOfFiles:
+        with open(fileName) as file_object:
+            for line in file_object.readlines():
+                if (line[0] == "#"):
+                    print(line)
