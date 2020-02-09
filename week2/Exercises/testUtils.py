@@ -25,5 +25,5 @@ from utils import filenamesToFolder, allFileNames, printFirstLine, findEmails, g
 #             "PythonProjects/week2/Exercises/emails.txt"])
 
 # Test of number 5
-getHeadlines(["PythonProjects/week2/Exercises/one.md",
-              "PythonProjects/week2/Exercises/two.md"])
+# getHeadlines(["PythonProjects/week2/Exercises/one.md",
+#               "PythonProjects/week2/Exercises/two.md"])

@@ -13,6 +13,8 @@ import os
 import openpyxl
 import csv
 import platform
+import argparse
+import sys
 from pathlib import Path
 
 
@@ -116,3 +118,21 @@ def getHeadlines(listOfMdFiles):
             for line in file_object.readlines():
                 if (line[0] == "#"):
                     print(line.rstrip())
+
+
+parser = argparse.ArgumentParser(
+    description='A program that downloads a URL and stores it locally')
+
+# Positional arg
+parser.add_argument('func', help='name of the def you wanna run')
+
+if __name__ == '__main__':
+    args, restArgs = parser.parse_known_args()
+
+    nameOfDef = args.func
+
+    if (nameOfDef == "filenamesToFolder"):
+        filenamesToFolder(restArgs[0], restArgs[1])
+
+    if (nameOfDef == "allFileNames"):
+        allFileNames(restArgs[0])
