@@ -136,3 +136,12 @@ if __name__ == '__main__':
 
     if (nameOfDef == "allFileNames"):
         allFileNames(restArgs[0])
+
+    if (nameOfDef == "printFirstLine"):
+        printFirstLine(restArgs)
+
+    if (nameOfDef == "findEmails"):
+        findEmails(restArgs)
+
+    if (nameOfDef == "getHeadlines"):
+        getHeadlines(restArgs)
