@@ -8,17 +8,17 @@ class Student():
         self.data_sheet = data_sheet
         self.image_url = image_url
 
-    def get_avg_grade():
+    def get_avg_grade(self):
         # 6. In student create a method: get_avg_grade()
         pass
 
-    def showProgression():
+    def showProgression(self):
         # 8. Make a method on Student class that can show progression
         # of the study in % (add up ECTS from all passed courses
         # divided by total of 150 total points (equivalent to 5 semesters))
         pass
 
-    def getListOfCourses():
+    def getListOfCourses(self):
         #    1. create a method on student that can return a list of courses
         pass
 
@@ -30,9 +30,10 @@ class DataSheet():
 
     # Extra: Make the Datasheet class iterable so that next(data_sheet) will return the next course in the list
 
-    def __init__()
+    def __init__(self, *courses):
+        pass
 
-    def get_grades_as_list():
+    def get_grades_as_list(self):
         # 5. In DataSheet create a method to get_grades_as_list()
         pass
 
@@ -41,6 +42,9 @@ class DataSheet():
 
 class Course():
     # 3. Each course has name, classroom, teacher, ETCS and optional grade if course is taken.
+    def __init__(self, name, classroom, teacher, ects, grade):
+        pass
+
     pass
 
 
