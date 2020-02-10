@@ -31,21 +31,40 @@ class DataSheet():
     # Extra: Make the Datasheet class iterable so that next(data_sheet) will return the next course in the list
 
     def __init__(self, *courses):
-        pass
+        for course in courses:
+            addCourse(course)
 
     def get_grades_as_list(self):
         # 5. In DataSheet create a method to get_grades_as_list()
-        pass
+        grades = []
+        for course in getCourses():
+            grades.append(course.getGrade())
+
+        return grades
+
+    def addCourse(self, course):
+        if (isinstance(course, Course)):
+            self._courses.append(Course)
+        else:
+            raise ValueError("ERROR: {} is not a Course.".format(course))
+
+    def getCourses(self):
+        return self._courses
 
     pass
 
 
 class Course():
     # 3. Each course has name, classroom, teacher, ETCS and optional grade if course is taken.
-    def __init__(self, name, classroom, teacher, ects, grade):
-        pass
+    def __init__(self, name, classroom, teacher, ects, grade=None):
+        self._name = name
+        self._classroom = classroom
+        self._teacher = teacher
+        self._ects = ects
+        self._grade = grade
 
-    pass
+    def getGrade(self):
+        return self._grade
 
 
 def generateStudents(numberOfStudents):
