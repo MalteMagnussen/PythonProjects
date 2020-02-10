@@ -1,4 +1,4 @@
-import Book
+from PythonProjects.week2.objectOriented import Book
 
 # Inheritance example
 

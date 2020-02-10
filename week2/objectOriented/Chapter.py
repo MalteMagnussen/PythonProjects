@@ -1,4 +1,4 @@
-import Paragraph
+from PythonProjects.week2.objectOriented import Paragraph
 
 
 class Chapter():

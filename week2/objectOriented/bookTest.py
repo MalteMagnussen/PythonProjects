@@ -1,4 +1,4 @@
-import Book
+from PythonProjects.week2.objectOriented import Book
 
 empty_book = Book.Book('The book of silence', 'Nobody')
 

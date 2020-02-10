@@ -1,8 +1,8 @@
-import webget
-from Book import Book
-import Chapter
-import Paragraph
-import ComicBook
+from PythonProjects.utils import webget
+from PythonProjects.week2.objectOriented.Book import Book
+from PythonProjects.week2.objectOriented import Chapter
+from PythonProjects.week2.objectOriented import Paragraph
+from PythonProjects.week2.objectOriented import ComicBook
 
 bones_in_london_url = 'http://www.gutenberg.org/cache/epub/27525/pg27525.txt'
 # download the book
