@@ -1,6 +1,6 @@
 from PythonProjects.utils import webget
 from PythonProjects.week2.objectOriented.Book import Book
-from PythonProjects.week2.objectOriented import Chapter
+from PythonProjects.week2.objectOriented.Chapter import Chapter
 from PythonProjects.week2.objectOriented import Paragraph
 from PythonProjects.week2.objectOriented import ComicBook
 
@@ -27,8 +27,8 @@ def get_text(lower_bound, upper_bound):
 
 
 # Test
-chapter_1 = Chapter.Chapter(1, 'Bones and Big Business', get_text(82, 762))
-chapter_2 = Chapter.Chapter(2, 'Hidden Treassure', get_text(769, 1455))
+chapter_1 = Chapter(1, 'Bones and Big Business', get_text(82, 762))
+chapter_2 = Chapter(2, 'Hidden Treassure', get_text(769, 1455))
 book = Book('Bones in London', 'Edgar Wallace', [chapter_1, chapter_2])
 
 print(book.author)
@@ -63,7 +63,7 @@ print(snd_paragraph.get_reading_position())
 
 snd_paragraph.read()
 
-print(" SCROLLING: _______________________")
+print("SCROLLING: _______________________")
 
 snd_paragraph.read()
 
