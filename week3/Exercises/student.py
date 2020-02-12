@@ -1,10 +1,12 @@
 # Used for CSV
+import secrets
 import csv
 import platform
 if platform.system() == 'Windows':
     newline = ''
 else:
     newline = None
+# Used for random
 
 
 class Student():
@@ -122,6 +124,8 @@ def generateStudents(numberOfStudents):
 
     # Path from Documents on Maltes Machine
     with open('PythonProjects/week3/Exercises/students.csv', 'w', newline=newline) as output_file:
+        # How to get random element:
+        # random_element = secrets.choice(list)
         output_writer = csv.writer(output_file)
 
         output_writer.writerow(['2015', '1', '0', '5100', '614,5'])
