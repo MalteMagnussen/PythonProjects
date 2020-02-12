@@ -124,14 +124,13 @@ def generateStudents(numberOfStudents):
 
     # Path from Documents on Maltes Machine
     with open('PythonProjects/week3/Exercises/students.csv', 'w', newline=newline) as output_file:
-        # How to get random element:
-        # random_element = secrets.choice(list)
         output_writer = csv.writer(output_file)
+        for n in numberOfStudents:
 
-        output_writer.writerow(['2015', '1', '0', '5100', '614,5'])
-        output_writer.writerow(['2015', '1', '0', '5104', '2,3'])
-        output_writer.writerow(['2015', '1', '0', '5106', '1'])
-        output_writer.writerow(['2015', '1', '0', '5110', '1'])
+            # How to get random element:
+            # random_element = secrets.choice(list)
+            #output_writer.writerow(['2015', '1', '0', '5100', '614,5'])
+            pass
 
     pass
 
