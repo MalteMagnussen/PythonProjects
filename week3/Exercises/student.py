@@ -35,11 +35,10 @@ class Student():
 class DataSheet():
     # 2. a data_sheet has multiple courses in particular order
 
-    # Extra: Make the Datasheet class iterable so that next(data_sheet) will return the next course in the list
-
     def __init__(self, *courses):
         for course in courses:
             addCourse(course)
+        self.high = len(self.getCourses())
 
     def get_grades_as_list(self):
         # 5. In DataSheet create a method to get_grades_as_list()
@@ -51,7 +50,7 @@ class DataSheet():
 
     def getEcts(self):
         ects = 0
-        for course in getCourses():
+        for course in self.getCourses():
             ects += course.getEcts()
         return ects
 
@@ -64,7 +63,16 @@ class DataSheet():
     def getCourses(self):
         return self._courses
 
-    pass
+    # Extra: Make the Datasheet class iterable so that next(data_sheet) will return the next course in the list
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):  # Python 2: def next(self)
+        self.current += 1
+        if self.current < self.high:
+            return self.getCourses()[self.current]
+        raise StopIteration
 
 
 class Course():
