@@ -57,6 +57,7 @@ class DataSheet():
     def addCourse(self, course):
         if (isinstance(course, Course)):
             self._courses.append(Course)
+            self.high += 1
         else:
             raise ValueError("ERROR: {} is not a Course.".format(course))
 
@@ -71,7 +72,8 @@ class DataSheet():
     def __next__(self):  # Python 2: def next(self)
         self.current += 1
         if self.current < self.high:
-            return self.getCourses()[self.current]
+            courses = self.getCourses()
+            return courses[self.current]
         raise StopIteration
 
 
