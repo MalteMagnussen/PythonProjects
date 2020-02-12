@@ -10,7 +10,12 @@ class Student():
 
     def get_avg_grade(self):
         # 6. In student create a method: get_avg_grade()
-        pass
+        grades = self.data_sheet.get_grades_as_list()
+        gradesSum = 0
+        for x in grades:
+            gradesSum += x
+
+        return gradesSum / len(grades)
 
     def showProgression(self):
         # 8. Make a method on Student class that can show progression
