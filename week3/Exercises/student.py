@@ -103,6 +103,14 @@ class Course():
 # Fixed list of course names
 courseNames = ["Software", "Datamatiker",
                "FullStack JavaScript", "Security", "Python"]
+genders = ["male", "female"]
+male_names = ["Malte", "Runi", "August", "Andreas",
+              "Nikolaj", "Lukas", "Jonas", "Asger"]
+female_names = ["Camilla", "Stine", "Rikke",
+                "Ida", "Lucia", "Emma", "Iben", "Lotte"]
+grades = [-3, 00, 2, 4, 7, 10, 12]
+img_urls = ["https://i.imgur.com/iARwJbr.jpg", "https://i.imgur.com/axzIjP6.jpg",
+            "https://i.imgur.com/hPwV7x5.jpg", "https://i.imgur.com/f08ctzd.jpg", "https://i.imgur.com/X7dHjzh.jpg"]
 
 
 def generateStudents(numberOfStudents):
