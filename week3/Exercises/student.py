@@ -21,11 +21,13 @@ class Student():
         # 8. Make a method on Student class that can show progression
         # of the study in % (add up ECTS from all passed courses
         # divided by total of 150 total points (equivalent to 5 semesters))
-        pass
+        pointsCompleted = self.data_sheet.getEcts()
+        percent = 150 / pointsCompleted * 100
+        return percent
 
     def getListOfCourses(self):
         #    1. create a method on student that can return a list of courses
-        pass
+        return self.data_sheet.getCourses()
 
     pass
 
@@ -46,6 +48,12 @@ class DataSheet():
             grades.append(course.getGrade())
 
         return grades
+
+    def getEcts(self):
+        ects = 0
+        for course in getCourses():
+            ects += course.getEcts()
+        return ects
 
     def addCourse(self, course):
         if (isinstance(course, Course)):
@@ -70,6 +78,9 @@ class Course():
 
     def getGrade(self):
         return self._grade
+
+    def getEcts(self):
+        return self._ects
 
 
 def generateStudents(numberOfStudents):
