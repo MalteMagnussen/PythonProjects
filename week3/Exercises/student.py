@@ -1,3 +1,12 @@
+# Used for CSV
+import csv
+import platform
+if platform.system() == 'Windows':
+    newline = ''
+else:
+    newline = None
+
+
 class Student():
     # 2. A student has a data_sheet
 
@@ -28,8 +37,6 @@ class Student():
     def getListOfCourses(self):
         #    1. create a method on student that can return a list of courses
         return self.data_sheet.getCourses()
-
-    pass
 
 
 class DataSheet():
@@ -93,11 +100,27 @@ class Course():
         return self._ects
 
 
+# Fixed list of course names
+courseNames = ["Software", "Datamatiker",
+               "FullStack JavaScript", "Security", "Python"]
+
+
 def generateStudents(numberOfStudents):
     # 7. Create a function that can generate n number of students
     # with random: name, gender, courses (from a fixed list of course names), grades, img_url
+
     # 1. Let the function write the result to a csv file with format
     # stud_name, course_name, teacher, ects, classroom, grade, img_url
+
+    # Path from Documents on Maltes Machine
+    with open('PythonProjects/week3/Exercises/students.csv', 'w', newline=newline) as output_file:
+        output_writer = csv.writer(output_file)
+
+        output_writer.writerow(['2015', '1', '0', '5100', '614,5'])
+        output_writer.writerow(['2015', '1', '0', '5104', '2,3'])
+        output_writer.writerow(['2015', '1', '0', '5106', '1'])
+        output_writer.writerow(['2015', '1', '0', '5110', '1'])
+
     pass
 
 
