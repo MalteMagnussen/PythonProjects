@@ -156,6 +156,9 @@ def readStudentData(csvFilePath, showGraph):
     # 7. Read student data into a list from a csv file:
     #    2. sort the list by avg_grade
 
+    # TODO:
+    # DOESNT SORT PROPERLY
+
     students = []
 
     with open(csvFilePath) as f:
@@ -209,8 +212,9 @@ def readStudentData(csvFilePath, showGraph):
         plt.figure()
         # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
 
-        plt.bar(([i.get("student_name") for i in students_sorted]),
-                ([i.get("avg_grade") for i in students_sorted]), width=0.7, align='center')
+        myDict = {x["student_name"]: x["avg_grade"] for x in students_sorted}
+
+        plt.bar(myDict.keys(), myDict.values(), width=0.7, align='center')
         # plt.ticklabel_format(useOffset=False)
         # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
         title = "Average Grade per Student"
@@ -282,7 +286,12 @@ def closestToCompletion(students):
             "Not enough students. Must be at least 3.")
     # 1. Create a function that can take a list of students
     # and return the 3 students closest to completing their study.
-    pass
+    students_sorted = sorted(students, key=lambda i: i['avg_grade'])
+    print(students_sorted[-3:])
+    return students_sorted[-3:]
+
+
+#closestToCompletion(readStudentData(csvPath, False))
 
 
 def topStudentsToCSV(listOfStudents):
