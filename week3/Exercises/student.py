@@ -158,7 +158,22 @@ def readStudentData(csvFilePath):
     #    2. sort the list by avg_grade
     #    3. create a bar chart with student_name on x and avg_grade on y-axis
 
-    pass
+    students = []
+
+    with open(csvFilePath) as f:
+        reader = csv.reader(f)
+        header_row = next(reader)
+
+        # print header + its index
+        for index, column_header in enumerate(header_row):
+            print(index, column_header)
+
+        # Get rest of rows after header and do something
+        for row in reader:
+            print('Row #' + str(reader.line_num) + ' ' + str(row))
+
+
+readStudentData(csvPath)
 
 
 def visualizeStudentProgression():
