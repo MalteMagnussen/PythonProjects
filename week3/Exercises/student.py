@@ -12,7 +12,7 @@ else:
 class Student():
     # 2. A student has a data_sheet
 
-    def __init__(self, name, gender, data_sheet, image_url):
+    def __init__(self, name: str, gender: str, data_sheet: DataSheet, image_url: str):
         # 4. In Student create __init__() so that a Student can be initiated with name, gender, data_sheet and image_url
         self.name = name
         self.gender = gender
@@ -44,7 +44,7 @@ class Student():
 class DataSheet():
     # 2. a data_sheet has multiple courses in particular order
 
-    def __init__(self, *courses):
+    def __init__(self, *courses: Course):  # BEWARE
         for course in courses:
             addCourse(course)
         self.high = len(self.getCourses())
@@ -63,7 +63,7 @@ class DataSheet():
             ects += course.getEcts()
         return ects
 
-    def addCourse(self, course):
+    def addCourse(self, course: Course):
         if (isinstance(course, Course)):
             self._courses.append(Course)
             self.high += 1
@@ -88,7 +88,7 @@ class DataSheet():
 
 class Course():
     # 3. Each course has name, classroom, teacher, ETCS and optional grade if course is taken.
-    def __init__(self, name, classroom, teacher, ects, grade=None):
+    def __init__(self, name: str, classroom: str, teacher: str, ects: int, grade: int = None):
         self._name = name
         self._classroom = classroom
         self._teacher = teacher
