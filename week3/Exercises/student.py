@@ -2,6 +2,8 @@
 import secrets
 import csv
 import platform
+import matplotlib.pyplot as plt
+import json
 if platform.system() == 'Windows':
     newline = ''
 else:
@@ -149,14 +151,9 @@ def generateStudents(numberOfStudents):
                                     myEcts, secrets.choice(classrooms), myGrades, secrets.choice(img_urls)])
 
 
-# generateStudents(50)
-
-
 def readStudentData(csvFilePath):
     # 7. Read student data into a list from a csv file:
-    #    1. loop through the list and print each student with name, img_url and avg_grade.
     #    2. sort the list by avg_grade
-    #    3. create a bar chart with student_name on x and avg_grade on y-axis
 
     students = []
 
@@ -168,11 +165,51 @@ def readStudentData(csvFilePath):
         for index, column_header in enumerate(header_row):
             print(index, column_header)
 
+        # 0 stud_name
+        # 1 course_name
+        # 2 teacher
+        # 3 ects
+        # 4 classroom
+        # 5 grade
+        # 6 img_url
+
         # Get rest of rows after header and do something
         for row in reader:
-            print('Row #' + str(reader.line_num) + ' ' + str(row))
+            grades = json.loads(row[5])
+            totalGrades = 0
+            for x in grades:
+                totalGrades += int(x)
+
+            if (totalGrades != 0):
+                avgGrade = totalGrades / len(grades)
+            else:
+                avgGrade = 0
+            #    1. loop through the list and print each student with name, img_url and avg_grade.
+            print("\n\nName: "+row[0]+"\nImage URL: " +
+                  row[6]+"\nAverage Grade: "+str(avgGrade))
+
+            student = {"student_name": row[0], "avg_grade": avgGrade}
+            students.append(student)
+
+        print(students)
+
+    #    3. create a bar chart with student_name on x and avg_grade on y-axis
+    plt.figure()
+    # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
+    plt.bar([i.get("student_name") for i in students], [
+            i.get("avg_grade") for i in students], width=0.7, align='center')
+    # plt.ticklabel_format(useOffset=False)
+    # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
+    title = "Average Grade per Student"
+    plt.title(title, fontsize=12)
+    plt.xlabel("Student Names", fontsize=10)
+    plt.ylabel("Average Grades", fontsize=10)
+    plt.tick_params(axis='both', which='major', labelsize=10)
+    plt.show()
 
 
+# TESTING
+# generateStudents(10)
 readStudentData(csvPath)
 
 
