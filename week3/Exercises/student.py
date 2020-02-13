@@ -1,4 +1,5 @@
 # Used for CSV
+import math
 import secrets
 import csv
 import platform
@@ -197,8 +198,8 @@ def readStudentData(csvFilePath, showGraph):
 
         # print(students)
 
+    students_sorted = sorted(students, key=lambda i: i['avg_grade'])
     if (showGraph == True):
-        students_sorted = sorted(students, key=lambda i: i['avg_grade'])
         print("students non sorted: ")
         print(students)
         print("\n\n")
@@ -208,8 +209,8 @@ def readStudentData(csvFilePath, showGraph):
         plt.figure()
         # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
 
-        plt.bar(list([i.get("student_name") for i in students_sorted]),
-                list([i.get("avg_grade") for i in students_sorted]), width=0.7, align='center')
+        plt.bar(([i.get("student_name") for i in students_sorted]),
+                ([i.get("avg_grade") for i in students_sorted]), width=0.7, align='center')
         # plt.ticklabel_format(useOffset=False)
         # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
         title = "Average Grade per Student"
@@ -218,26 +219,41 @@ def readStudentData(csvFilePath, showGraph):
         plt.ylabel("Average Grades", fontsize=10)
         plt.show()
 
-    return students_sorted
+    return students
 
 
 # TESTING
 # generateStudents(11)
-readStudentData(csvPath, True)
+#readStudentData(csvPath, True)
+
+
+def roundup(x):
+    return int(math.ceil(x / 10.0)) * 10
 
 
 def visualizeStudentProgression():
+
     # 9. Show a line graph of distribution of study progression on x-axis and
     # number of students in each category on y-axis. (e.g. make 10 categories from 0-100%)
-    categories = [str(i*10)+"%" for i in range(0, 11)]
+    categories = [i*10 for i in range(0, 11)]
     students = readStudentData(csvPath, False)
     print(students)
-    # print(categories)
+    myDict = {i: 0 for i in categories}
+    for student in students:
+        # Get % of way through studies.
+        # 150 ects for a done study == 100%
+        ects = student.get("ects")
+        percent = roundup(ects/1.5)
+        myDict[percent] += 1
+
+    print(myDict)
+
+    # # print(categories)
     plt.figure()
     plt.title("Study Progression", fontsize=12)
     plt.xlabel("% Progress", fontsize=10)
-    plt.ylabel("ECTS completed", fontsize=10)
-    plt.plot(categories, [i.get("ects") for i in students])
+    plt.ylabel("Number of students", fontsize=10)
+    plt.plot(list(myDict.keys()), list(myDict.values()))
     plt.show()
 
 
@@ -259,10 +275,13 @@ class NotEnoughStudentsException(ValueError):
         ValueError.__init__(self, *args, **kwargs)
 
 
-def closestToCompletion(listOfStudents):
+def closestToCompletion(students):
+    if len(students) < 3:
+        # 2. If list is shorter than 3 raise your own custom exception (NotEnoughStudentsException)
+        raise NotEnoughStudentsException(
+            "Not enough students. Must be at least 3.")
     # 1. Create a function that can take a list of students
     # and return the 3 students closest to completing their study.
-    # 2. If list is shorter than 3 raise your own custom exception (NotEnoughStudentsException)
     pass
 
 
