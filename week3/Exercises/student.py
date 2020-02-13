@@ -151,7 +151,7 @@ def generateStudents(numberOfStudents):
                                     myEcts, secrets.choice(classrooms), myGrades, secrets.choice(img_urls)])
 
 
-def readStudentData(csvFilePath):
+def readStudentData(csvFilePath, showGraph):
     # 7. Read student data into a list from a csv file:
     #    2. sort the list by avg_grade
 
@@ -188,35 +188,60 @@ def readStudentData(csvFilePath):
             print("\n\nName: "+row[0]+"\nImage URL: " +
                   row[6]+"\nAverage Grade: "+str(avgGrade))
 
-            student = {"student_name": row[0], "avg_grade": avgGrade}
+            student = {
+                "student_name": row[0],
+                "avg_grade": avgGrade,
+                "ects": int(row[3])
+            }
             students.append(student)
 
-        print(students)
+        # print(students)
 
-    #    3. create a bar chart with student_name on x and avg_grade on y-axis
-    plt.figure()
-    # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
-    plt.bar([i.get("student_name") for i in students], [
-            i.get("avg_grade") for i in students], width=0.7, align='center')
-    # plt.ticklabel_format(useOffset=False)
-    # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
-    title = "Average Grade per Student"
-    plt.title(title, fontsize=12)
-    plt.xlabel("Student Names", fontsize=10)
-    plt.ylabel("Average Grades", fontsize=10)
-    plt.tick_params(axis='both', which='major', labelsize=10)
-    plt.show()
+    if (showGraph == True):
+        students_sorted = sorted(students, key=lambda i: i['avg_grade'])
+        print("students non sorted: ")
+        print(students)
+        print("\n\n")
+        print("students sorted: ")
+        print(students_sorted)
+        #    3. create a bar chart with student_name on x and avg_grade on y-axis
+        plt.figure()
+        # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
+
+        plt.bar(list([i.get("student_name") for i in students_sorted]),
+                list([i.get("avg_grade") for i in students_sorted]), width=0.7, align='center')
+        # plt.ticklabel_format(useOffset=False)
+        # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
+        title = "Average Grade per Student"
+        plt.title(title, fontsize=12)
+        plt.xlabel("Student Names", fontsize=10)
+        plt.ylabel("Average Grades", fontsize=10)
+        plt.show()
+
+    return students_sorted
 
 
 # TESTING
-# generateStudents(10)
-readStudentData(csvPath)
+# generateStudents(11)
+readStudentData(csvPath, True)
 
 
 def visualizeStudentProgression():
     # 9. Show a line graph of distribution of study progression on x-axis and
     # number of students in each category on y-axis. (e.g. make 10 categories from 0-100%)
-    pass
+    categories = [str(i*10)+"%" for i in range(0, 11)]
+    students = readStudentData(csvPath, False)
+    print(students)
+    # print(categories)
+    plt.figure()
+    plt.title("Study Progression", fontsize=12)
+    plt.xlabel("% Progress", fontsize=10)
+    plt.ylabel("ECTS completed", fontsize=10)
+    plt.plot(categories, [i.get("ects") for i in students])
+    plt.show()
+
+
+# visualizeStudentProgression()
 
 
 class NotEnoughStudentsException(ValueError):

@@ -1,11 +1,12 @@
 stud_name,course_name,teacher,ects,classroom,grades,img_url
-Ida,FullStack JavaScript,Asger,60,101,"[12, 7]",https://i.imgur.com/iARwJbr.jpg
-Emma,Datamatiker,Lukas,30,101,[4],https://i.imgur.com/X7dHjzh.jpg
-Ida,Security,Lukas,60,103,"[12, 10]",https://i.imgur.com/f08ctzd.jpg
-August,Software,Jonas,0,203,[],https://i.imgur.com/iARwJbr.jpg
-Stine,Software,Jonas,150,105,"[7, -3, 0, 0, -3]",https://i.imgur.com/hPwV7x5.jpg
-Stine,Python,Nikolaj,120,203,"[-3, 2, 10, 0]",https://i.imgur.com/iARwJbr.jpg
-Lotte,Software,August,150,203,"[4, 4, 7, 0, 0]",https://i.imgur.com/axzIjP6.jpg
-Runi,Datamatiker,Asger,0,103,[],https://i.imgur.com/f08ctzd.jpg
-Ida,Security,Malte,30,103,[10],https://i.imgur.com/f08ctzd.jpg
-Runi,Datamatiker,Malte,120,103,"[-3, -3, 4, 10]",https://i.imgur.com/iARwJbr.jpg
+Asger,Python,Lukas,90,203,"[10, -3, -3]",https://i.imgur.com/iARwJbr.jpg
+Malte,Software,Andreas,120,203,"[4, 0, 10, 4]",https://i.imgur.com/hPwV7x5.jpg
+Rikke,Python,Runi,90,105,"[12, 4, 2]",https://i.imgur.com/hPwV7x5.jpg
+Jonas,Python,Lukas,150,205,"[4, 12, 4, 7, -3]",https://i.imgur.com/axzIjP6.jpg
+Runi,Software,Malte,30,205,[10],https://i.imgur.com/f08ctzd.jpg
+Malte,Datamatiker,Asger,0,203,[],https://i.imgur.com/X7dHjzh.jpg
+Lucia,Software,Jonas,30,203,[2],https://i.imgur.com/iARwJbr.jpg
+Lukas,Datamatiker,Runi,60,103,"[7, 7]",https://i.imgur.com/axzIjP6.jpg
+Runi,Datamatiker,Andreas,150,101,"[10, 2, 4, -3, 10]",https://i.imgur.com/axzIjP6.jpg
+Rikke,Software,Nikolaj,0,203,[],https://i.imgur.com/hPwV7x5.jpg
+Andreas,FullStack JavaScript,Nikolaj,30,203,[12],https://i.imgur.com/iARwJbr.jpg
