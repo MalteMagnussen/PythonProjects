@@ -1,12 +1,51 @@
 stud_name,course_name,teacher,ects,classroom,grades,img_url
-Asger,Python,Lukas,90,203,"[10, -3, -3]",https://i.imgur.com/iARwJbr.jpg
-Malte,Software,Andreas,120,203,"[4, 0, 10, 4]",https://i.imgur.com/hPwV7x5.jpg
-Rikke,Python,Runi,90,105,"[12, 4, 2]",https://i.imgur.com/hPwV7x5.jpg
-Jonas,Python,Lukas,150,205,"[4, 12, 4, 7, -3]",https://i.imgur.com/axzIjP6.jpg
-Runi,Software,Malte,30,205,[10],https://i.imgur.com/f08ctzd.jpg
-Malte,Datamatiker,Asger,0,203,[],https://i.imgur.com/X7dHjzh.jpg
-Lucia,Software,Jonas,30,203,[2],https://i.imgur.com/iARwJbr.jpg
-Lukas,Datamatiker,Runi,60,103,"[7, 7]",https://i.imgur.com/axzIjP6.jpg
-Runi,Datamatiker,Andreas,150,101,"[10, 2, 4, -3, 10]",https://i.imgur.com/axzIjP6.jpg
-Rikke,Software,Nikolaj,0,203,[],https://i.imgur.com/hPwV7x5.jpg
-Andreas,FullStack JavaScript,Nikolaj,30,203,[12],https://i.imgur.com/iARwJbr.jpg
+Nikolaj,Software,Runi,90,203,"[12, 0, 0]",https://i.imgur.com/hPwV7x5.jpg
+Lukas,Security,Nikolaj,150,205,"[4, 7, 12, 4, 4]",https://i.imgur.com/axzIjP6.jpg
+Emma,Security,Asger,90,105,"[7, 0, 0]",https://i.imgur.com/axzIjP6.jpg
+Lukas,Software,Jonas,90,103,"[7, -3, 2]",https://i.imgur.com/hPwV7x5.jpg
+Camilla,Security,Asger,150,103,"[7, 0, -3, 4, 0]",https://i.imgur.com/axzIjP6.jpg
+Stine,Python,Nikolaj,90,101,"[2, 0, 2]",https://i.imgur.com/f08ctzd.jpg
+Runi,Python,Runi,0,101,[],https://i.imgur.com/iARwJbr.jpg
+Malte,Python,August,120,205,"[-3, 4, 2, 7]",https://i.imgur.com/axzIjP6.jpg
+Andreas,Security,August,0,101,[],https://i.imgur.com/X7dHjzh.jpg
+Malte,Software,Andreas,90,101,"[12, 4, 0]",https://i.imgur.com/X7dHjzh.jpg
+Ida,Security,Lukas,120,105,"[-3, 0, 2, 12]",https://i.imgur.com/axzIjP6.jpg
+Andreas,Security,Runi,0,205,[],https://i.imgur.com/X7dHjzh.jpg
+Iben,Security,August,150,203,"[7, 12, 2, 4, 10]",https://i.imgur.com/axzIjP6.jpg
+Emma,Security,Jonas,60,105,"[12, 12]",https://i.imgur.com/f08ctzd.jpg
+August,Python,August,0,103,[],https://i.imgur.com/hPwV7x5.jpg
+Andreas,Datamatiker,Jonas,150,203,"[0, 12, -3, -3, 10]",https://i.imgur.com/X7dHjzh.jpg
+Emma,Software,Asger,150,101,"[-3, 12, 0, 4, 0]",https://i.imgur.com/hPwV7x5.jpg
+August,FullStack JavaScript,Runi,90,205,"[4, 4, 0]",https://i.imgur.com/axzIjP6.jpg
+Malte,FullStack JavaScript,August,30,101,[0],https://i.imgur.com/axzIjP6.jpg
+Nikolaj,Datamatiker,Asger,60,205,"[12, 7]",https://i.imgur.com/X7dHjzh.jpg
+August,FullStack JavaScript,Malte,30,203,[4],https://i.imgur.com/iARwJbr.jpg
+Lucia,FullStack JavaScript,August,90,103,"[2, 12, 4]",https://i.imgur.com/X7dHjzh.jpg
+Ida,Software,Runi,60,205,"[4, 10]",https://i.imgur.com/f08ctzd.jpg
+Andreas,Python,Malte,60,105,"[4, 0]",https://i.imgur.com/X7dHjzh.jpg
+Lucia,Security,Malte,120,203,"[10, 2, 7, -3]",https://i.imgur.com/axzIjP6.jpg
+Asger,Python,Runi,30,105,[0],https://i.imgur.com/hPwV7x5.jpg
+Nikolaj,Python,August,150,101,"[4, -3, 7, 7, 12]",https://i.imgur.com/X7dHjzh.jpg
+Lukas,Software,Asger,0,203,[],https://i.imgur.com/hPwV7x5.jpg
+Lukas,Python,Lukas,90,103,"[2, 2, 12]",https://i.imgur.com/f08ctzd.jpg
+Asger,FullStack JavaScript,Nikolaj,0,105,[],https://i.imgur.com/X7dHjzh.jpg
+Lucia,Datamatiker,Andreas,90,203,"[2, 12, 2]",https://i.imgur.com/X7dHjzh.jpg
+Stine,Python,Jonas,30,101,[4],https://i.imgur.com/f08ctzd.jpg
+Runi,Security,Andreas,30,105,[2],https://i.imgur.com/X7dHjzh.jpg
+Runi,Software,Lukas,60,105,"[7, 7]",https://i.imgur.com/iARwJbr.jpg
+August,Security,Asger,90,205,"[0, 0, 10]",https://i.imgur.com/hPwV7x5.jpg
+Jonas,Datamatiker,Nikolaj,60,205,"[7, 10]",https://i.imgur.com/iARwJbr.jpg
+Lucia,Python,Lukas,120,101,"[7, -3, 12, 7]",https://i.imgur.com/X7dHjzh.jpg
+Lukas,Python,Runi,120,205,"[0, 2, 12, -3]",https://i.imgur.com/axzIjP6.jpg
+Jonas,Security,Jonas,120,203,"[4, 2, 7, 4]",https://i.imgur.com/f08ctzd.jpg
+August,Security,Lukas,60,203,"[7, 12]",https://i.imgur.com/f08ctzd.jpg
+Asger,Security,Runi,60,103,"[2, -3]",https://i.imgur.com/X7dHjzh.jpg
+Malte,Datamatiker,Runi,30,203,[7],https://i.imgur.com/X7dHjzh.jpg
+Camilla,Software,Runi,90,203,"[-3, -3, 0]",https://i.imgur.com/hPwV7x5.jpg
+Runi,Datamatiker,Asger,0,101,[],https://i.imgur.com/f08ctzd.jpg
+Malte,Security,Runi,120,105,"[4, 10, -3, 0]",https://i.imgur.com/X7dHjzh.jpg
+Camilla,Python,August,120,105,"[0, -3, 7, 10]",https://i.imgur.com/f08ctzd.jpg
+Iben,Security,Malte,30,203,[0],https://i.imgur.com/iARwJbr.jpg
+Malte,Python,August,120,205,"[7, 4, 7, 7]",https://i.imgur.com/f08ctzd.jpg
+Runi,FullStack JavaScript,Asger,0,203,[],https://i.imgur.com/X7dHjzh.jpg
+Jonas,Python,Nikolaj,120,105,"[12, 10, -3, 0]",https://i.imgur.com/f08ctzd.jpg

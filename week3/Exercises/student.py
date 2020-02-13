@@ -1,4 +1,5 @@
 # Used for CSV
+import numpy as np
 import math
 import secrets
 import csv
@@ -196,11 +197,13 @@ def readStudentData(csvFilePath, showGraph):
             student = {
                 "student_name": row[0],
                 "avg_grade": avgGrade,
-                "ects": int(row[3])
+                "ects": int(row[3]),
+                "course": row[1]
+
             }
             students.append(student)
 
-        # print(students)
+        print(students)
 
     students_sorted = sorted(students, key=lambda i: i['avg_grade'])
     if (showGraph == True):
@@ -228,7 +231,7 @@ def readStudentData(csvFilePath, showGraph):
 
 
 # TESTING
-# generateStudents(11)
+# generateStudents(50)
 # readStudentData(csvPath, True)
 
 
@@ -355,11 +358,43 @@ def ectsDistrubution():
     plt.show()
 
 
-ectsDistrubution()
+# ectsDistrubution()
 
 
-def courseBarChart():
+def courseBarChart(students):
     # 2. create a function that can take a list of students
     # and show how many students have taken each course (bar chart)
+    maleDict = {k: 0 for k in courseNames}
+    femaleDict = {k: 0 for k in courseNames}
+    N = 5
+    ind = np.arange(N)  # the x locations for the groups
+
+    for x in students:
+        if x["student_name"] in male_names:
+            maleDict[x["course"]] += 1
+        else:
+            femaleDict[x["course"]] += 1
+    print(maleDict)
+    print(femaleDict)
+    width = 0.35  # the width of the bars
+
     # 3. make the figure show males and females in different colors for each course (display 2 datasets in same figure)
-    pass
+    fig, ax = plt.subplots()
+
+    # bar(x-vals, y-vals, bar width, align bar relative to x-val on x-axis) )
+
+    ax.bar(ind, maleDict.values(), width,
+           color='blue')
+    ax.bar(ind+width, femaleDict.values(), width,
+           color='pink')
+    # plt.ticklabel_format(useOffset=False)
+    # plt.axis([0, max(ages) + 10, 0, max_y_val+500]) #axis(x-min, x-max, y-min, y-max)
+    title = "Who have taken each course. Blue = Boys. Pink = Girls."
+    ax.set_title(title, fontsize=12)
+    ax.set_xticks(ind + width / 2)
+    ax.set_xticklabels(maleDict.keys())
+    ax.set_ylabel("Number of Students", fontsize=10)
+    plt.show()
+
+
+courseBarChart(readStudentData(csvPath, False))
