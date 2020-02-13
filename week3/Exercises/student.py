@@ -120,6 +120,7 @@ classrooms = [103, 105, 101, 203, 205]
 ects = [0, 30, 60, 90, 120, 150]
 
 csvPath = "PythonProjects/week3/Exercises/students.csv"
+topStudentsCSV = "PythonProjects/week3/Exercises/topstudents.csv"
 
 
 def generateStudents(numberOfStudents):
@@ -228,7 +229,7 @@ def readStudentData(csvFilePath, showGraph):
 
 # TESTING
 # generateStudents(11)
-#readStudentData(csvPath, True)
+# readStudentData(csvPath, True)
 
 
 def roundup(x):
@@ -279,7 +280,8 @@ class NotEnoughStudentsException(ValueError):
         ValueError.__init__(self, *args, **kwargs)
 
 
-def closestToCompletion(students):
+def closestToCompletion():
+    students = readStudentData(csvPath, False)
     if len(students) < 3:
         # 2. If list is shorter than 3 raise your own custom exception (NotEnoughStudentsException)
         raise NotEnoughStudentsException(
@@ -291,20 +293,69 @@ def closestToCompletion(students):
     return students_sorted[-3:]
 
 
-#closestToCompletion(readStudentData(csvPath, False))
+# closestToCompletion()
 
 
-def topStudentsToCSV(listOfStudents):
+def topStudentsToCSV():
+    students = closestToCompletion()
     # 3. Create another function that can create a csv file with 3 students closest to completion
     #    1. If an exception is raised write an appropriate message to the file
-    pass
+    try:
+        with open(topStudentsCSV, 'w', newline=newline) as output_file:
+            # student = {
+            #         "student_name": row[0],
+            #         "avg_grade": avgGrade,
+            #         "ects": int(row[3])
+            #     }
+            output_writer = csv.writer(output_file)
+            # Header Row
+            output_writer.writerow(
+                ["student_name", "avg_grade", "ects"])
+            for x in students:
+                output_writer.writerow([
+                    x["student_name"], x["avg_grade"], x["ects"]])
+
+    except Exception as e:
+        print(e)
+        with open(topStudentsCSV, 'w', newline=newline) as output_file:
+            output_writer.writerow("Not enough students. Must be at least 3.")
+
+
+# topStudentsToCSV()
 
 
 def ectsDistrubution():
     # 1. Create a function that can take a list of students
     # and show a pie chart of how students are distributed
     # in ECTS percentage categories (10%, 20%, ...)
-    pass
+    categories = [i*10 for i in range(0, 11)]
+    students = readStudentData(csvPath, False)
+    print(students)
+    myDict = {i: 0 for i in categories}
+    for student in students:
+        # Get % of way through studies.
+        # 150 ects for a done study == 100%
+        ects = student.get("ects")
+        percent = roundup(ects/1.5)
+        myDict[percent] += 1
+
+    print(myDict)
+
+    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+    labels = myDict.keys()
+    sizes = myDict.values()
+    explode = None
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    # Equal aspect ratio ensures that pie is drawn as a circle.
+    ax1.axis('equal')
+
+    plt.show()
+
+
+ectsDistrubution()
 
 
 def courseBarChart():
