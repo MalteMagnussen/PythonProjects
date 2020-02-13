@@ -1,0 +1,11 @@
+stud_name,course_name,teacher,ects,classroom,grade,img_url
+Jonas,Datamatiker,Malte,120,203,"[2, 12, 4, 0]",https://i.imgur.com/f08ctzd.jpg
+Asger,Datamatiker,Andreas,0,101,[],https://i.imgur.com/X7dHjzh.jpg
+Lukas,FullStack JavaScript,Asger,120,103,"[4, -3, 10, 2]",https://i.imgur.com/f08ctzd.jpg
+Camilla,FullStack JavaScript,Andreas,30,205,[7],https://i.imgur.com/f08ctzd.jpg
+Andreas,Datamatiker,Jonas,0,205,[],https://i.imgur.com/X7dHjzh.jpg
+Andreas,Software,August,60,101,"[-3, 7]",https://i.imgur.com/X7dHjzh.jpg
+Nikolaj,Software,Lukas,60,203,"[0, 2]",https://i.imgur.com/axzIjP6.jpg
+Nikolaj,Python,Runi,90,105,"[10, -3, -3]",https://i.imgur.com/f08ctzd.jpg
+Asger,Python,Jonas,30,101,[2],https://i.imgur.com/X7dHjzh.jpg
+Runi,Security,August,30,205,[12],https://i.imgur.com/iARwJbr.jpg

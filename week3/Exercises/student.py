@@ -9,36 +9,20 @@ else:
 # Used for random
 
 
-class Student():
-    # 2. A student has a data_sheet
+class Course():
+    # 3. Each course has name, classroom, teacher, ETCS and optional grade if course is taken.
+    def __init__(self, name: str, classroom: str, teacher: str, ects: int, grade: int = None):
+        self._name = name
+        self._classroom = classroom
+        self._teacher = teacher
+        self._ects = ects
+        self._grade = grade
 
-    def __init__(self, name: str, gender: str, data_sheet: DataSheet, image_url: str):
-        # 4. In Student create __init__() so that a Student can be initiated with name, gender, data_sheet and image_url
-        self.name = name
-        self.gender = gender
-        self.data_sheet = data_sheet
-        self.image_url = image_url
+    def getGrade(self):
+        return self._grade
 
-    def get_avg_grade(self):
-        # 6. In student create a method: get_avg_grade()
-        grades = self.data_sheet.get_grades_as_list()
-        gradesSum = 0
-        for x in grades:
-            gradesSum += x
-
-        return gradesSum / len(grades)
-
-    def showProgression(self):
-        # 8. Make a method on Student class that can show progression
-        # of the study in % (add up ECTS from all passed courses
-        # divided by total of 150 total points (equivalent to 5 semesters))
-        pointsCompleted = self.data_sheet.getEcts()
-        percent = 150 / pointsCompleted * 100
-        return percent
-
-    def getListOfCourses(self):
-        #    1. create a method on student that can return a list of courses
-        return self.data_sheet.getCourses()
+    def getEcts(self):
+        return self._ects
 
 
 class DataSheet():
@@ -86,23 +70,39 @@ class DataSheet():
         raise StopIteration
 
 
-class Course():
-    # 3. Each course has name, classroom, teacher, ETCS and optional grade if course is taken.
-    def __init__(self, name: str, classroom: str, teacher: str, ects: int, grade: int = None):
-        self._name = name
-        self._classroom = classroom
-        self._teacher = teacher
-        self._ects = ects
-        self._grade = grade
+class Student():
+    # 2. A student has a data_sheet
 
-    def getGrade(self):
-        return self._grade
+    def __init__(self, name: str, gender: str, data_sheet: DataSheet, image_url: str):
+        # 4. In Student create __init__() so that a Student can be initiated with name, gender, data_sheet and image_url
+        self.name = name
+        self.gender = gender
+        self.data_sheet = data_sheet
+        self.image_url = image_url
 
-    def getEcts(self):
-        return self._ects
+    def get_avg_grade(self):
+        # 6. In student create a method: get_avg_grade()
+        grades = self.data_sheet.get_grades_as_list()
+        gradesSum = 0
+        for x in grades:
+            gradesSum += x
+
+        return gradesSum / len(grades)
+
+    def showProgression(self):
+        # 8. Make a method on Student class that can show progression
+        # of the study in % (add up ECTS from all passed courses
+        # divided by total of 150 total points (equivalent to 5 semesters))
+        pointsCompleted = self.data_sheet.getEcts()
+        percent = 150 / pointsCompleted * 100
+        return percent
+
+    def getListOfCourses(self):
+        #    1. create a method on student that can return a list of courses
+        return self.data_sheet.getCourses()
 
 
-# Fixed list of course names
+# Fixed lists for random generation with secrets.choice(array)
 courseNames = ["Software", "Datamatiker",
                "FullStack JavaScript", "Security", "Python"]
 genders = ["male", "female"]
@@ -113,26 +113,43 @@ female_names = ["Camilla", "Stine", "Rikke",
 grades = [-3, 00, 2, 4, 7, 10, 12]
 img_urls = ["https://i.imgur.com/iARwJbr.jpg", "https://i.imgur.com/axzIjP6.jpg",
             "https://i.imgur.com/hPwV7x5.jpg", "https://i.imgur.com/f08ctzd.jpg", "https://i.imgur.com/X7dHjzh.jpg"]
+classrooms = [103, 105, 101, 203, 205]
+ects = [0, 30, 60, 90, 120, 150]
+
+csvPath = "PythonProjects/week3/Exercises/students.csv"
 
 
 def generateStudents(numberOfStudents):
+    # tested, and it works
+
     # 7. Create a function that can generate n number of students
     # with random: name, gender, courses (from a fixed list of course names), grades, img_url
 
-    # 1. Let the function write the result to a csv file with format
-    # stud_name, course_name, teacher, ects, classroom, grade, img_url
-
     # Path from Documents on Maltes Machine
-    with open('PythonProjects/week3/Exercises/students.csv', 'w', newline=newline) as output_file:
+    with open(csvPath, 'w', newline=newline) as output_file:
+
         output_writer = csv.writer(output_file)
-        for n in numberOfStudents:
+        # Header Row
+        output_writer.writerow(
+            ["stud_name", "course_name", "teacher", "ects", "classroom", "grades", "img_url"])
+        for i in range(0, numberOfStudents):
+            gender = secrets.choice(genders)
+            if gender == "male":
+                name = secrets.choice(male_names)
+            else:
+                name = secrets.choice(female_names)
+            # 1. Let the function write the result to a csv file with format
+                # stud_name, course_name, teacher, ects, classroom, grade, img_url
+            myEcts = secrets.choice(ects)
+            myGrades = []
+            for x in range(0, int(myEcts/30)):
+                myGrades.append(secrets.choice(grades))
 
-            # How to get random element:
-            # random_element = secrets.choice(list)
-            #output_writer.writerow(['2015', '1', '0', '5100', '614,5'])
-            pass
+            output_writer.writerow([name, secrets.choice(courseNames), secrets.choice(male_names),
+                                    myEcts, secrets.choice(classrooms), myGrades, secrets.choice(img_urls)])
 
-    pass
+
+# generateStudents(50)
 
 
 def readStudentData(csvFilePath):
@@ -140,6 +157,7 @@ def readStudentData(csvFilePath):
     #    1. loop through the list and print each student with name, img_url and avg_grade.
     #    2. sort the list by avg_grade
     #    3. create a bar chart with student_name on x and avg_grade on y-axis
+
     pass
 
 
