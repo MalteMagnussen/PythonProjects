@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 filename = './befkbhalderstatkode.csv'
 
@@ -14,7 +15,7 @@ dd[mask]
 
 mask = (dd[:, 0] == 2015) & (dd[:, 2] == 18) & (dd[:, 3] == 5100)
 print(dd[mask])
-# plt.axis([0,10,300,600])
-#plt.bar(dd[:,1], dd[:,4])
+plt.axis([0, 10, 300, 600])
+plt.bar(dd[:, 1], dd[:, 4])
 np.sum(dd[mask][:, 4])
-# plt.show()
+plt.show()
