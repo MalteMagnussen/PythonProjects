@@ -29,7 +29,30 @@ def opgaveEt():
         number = sum(people)
         exercise_one[x] = number
 
+    prebardata = {}
+
     for x in exercise_one.keys():
         print(""+str(neighb[x])+": "+str(exercise_one[x]))
+        prebardata[neighb[x]] = exercise_one[x]
 
-# Make a bar plot to show the size of each city area from the smallest to the largest
+    # Make a bar plot to show the size of each city area from the smallest to the largest
+
+    bardata = {k: v for k, v in sorted(
+        prebardata.items(), key=lambda item: item[1])}
+    plt.figure()
+
+    # First arg is X, second is Y. Then options.
+    plt.bar(list(bardata.keys()), list(bardata.values()), linewidth=5)
+
+    # Set chart title and label axes.
+    plt.title("Size of each city area.", fontsize=24)
+    plt.xlabel("Area", fontsize=14)
+    plt.ylabel("People", fontsize=14)
+    #plt.ylim([0, 35])
+    # Set size of tick labels.
+    plt.tick_params(axis='both', labelsize=14)
+
+    plt.show()
+
+
+opgaveEt()
