@@ -48,11 +48,32 @@ def opgaveEt():
     plt.title("Size of each city area.", fontsize=24)
     plt.xlabel("Area", fontsize=14)
     plt.ylabel("People", fontsize=14)
-    #plt.ylim([0, 35])
+    # plt.ylim([0, 35])
     # Set size of tick labels.
     plt.tick_params(axis='both', labelsize=14)
 
     plt.show()
 
 
-opgaveEt()
+# opgaveEt()
+
+# Create a boolean mask to find out how many people above 65 years lived in Copenhagen in 2015
+def over65():
+    twentyFifteen = data[data[:, 0] == 2015]
+    age = twentyFifteen[twentyFifteen[:, 2] > 65]
+    copenhagen = age[age[:, 1] != 99]
+    print("65 year olds in Copenhagen in 2015: "+str(sum(copenhagen[:, 4])))
+    # How many of those were from the other nordic countries (not dk)
+    # 5104 == Finland
+    # 5110 == Norge
+    # 5120 == Sverige
+    finish = copenhagen[copenhagen[:, 3] == 5104]
+    norway = copenhagen[copenhagen[:, 3] == 5110]
+    sweden = copenhagen[copenhagen[:, 3] == 5120]
+    print("of those, how many are from Nordic Countries: " +
+          str(sum(finish[:, 4])+sum(norway[:, 4])+sum(sweden[:, 4])))
+
+
+# over65()
+
+# Make a line plot showing the changes of number of people in vesterbro and østerbro from 1992 to 2015
