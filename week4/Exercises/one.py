@@ -76,4 +76,44 @@ def over65():
 
 # over65()
 
-# Make a line plot showing the changes of number of people in vesterbro and østerbro from 1992 to 2015
+def peopleChange():
+    # Make a line plot showing the changes of number of people in vesterbro and østerbro from 1992 to 2015
+    peopleØ = []
+    peopleV = []
+
+    østerbro = data[data[:, 1] == 2]
+    vesterbro = data[data[:, 1] == 4]
+    for year in range(1992, 2016):
+        # 2 == østerbro
+        # 4 == vesterbro
+        # AAR,BYDEL,ALDER,STATKODE,PERSONER
+        #   0,    1,    2,       3,       4
+        # Så for year where bydel == 2 og 4
+        personerØ = østerbro[østerbro[:, 0] == year]
+        personerV = vesterbro[vesterbro[:, 0] == year]
+        peopleV.append(sum(personerV[:, 4]))
+        peopleØ.append(sum(personerØ[:, 4]))
+        # print(peopleV)
+        # print(peopleØ)
+
+    plt.figure()
+
+    years = range(1992, 2016)
+
+    # First arg is X, second is Y. Then options.
+    plt.plot(list(years), list(peopleV), linewidth=5, label="Vesterbro")
+    plt.plot(list(years), list(peopleØ), linewidth=5, label="Østerbro")
+    plt.legend(loc=3, bbox_to_anchor=(1, 0))
+
+    # Set chart title and label axes.
+    plt.title("Change in number of people", fontsize=24)
+    plt.xlabel("Years", fontsize=14)
+    plt.ylabel("People", fontsize=14)
+    #plt.ylim([0, 35])
+    # Set size of tick labels.
+    plt.tick_params(axis='both', labelsize=14)
+
+    plt.show()
+
+
+peopleChange()
