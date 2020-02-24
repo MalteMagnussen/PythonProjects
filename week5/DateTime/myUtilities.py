@@ -17,3 +17,17 @@ def get_meeting_dates(period_as_timedelta, time_of_day,
 
 
 print(get_meeting_dates(timedelta(700), time(17, 0), 3))
+
+# create another list of number of attendents,
+# that was actually there at each meeting.
+
+# So to complete that task, I'd make a list of names.
+# Then I'd import import secrets choice
+# Then I'd take a random number of names from the list,
+# and slap them on the meetings.
+# Maybe make it a dictionary?
+# The key is the date, the value is the atendees
+
+# create a bar plot of attendance through the series of meetings
+# I know how to make a barplot now.
+# Might return to this if i find the time this week
