@@ -12,7 +12,17 @@ df = pd.DataFrame(data=myData,
                   index=["Row1", "Row2", "Row3"])
 
 print("\n", df)
+print()
+# print("\n", df.index)
 
-print("\n", df.index)
+# print("\n", df.columns)
 
-print("\n", df.columns)
+# Make slices of data:
+# 1. second column using column name
+print(df[['Col2']])
+print()
+# third column using column index (.iloc[])
+print(df.iloc[:, 2])
+print()
+# slice element at third row of second column (use .iloc())
+print(df.iloc[2, 1])
