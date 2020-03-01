@@ -36,6 +36,7 @@ try:
     data = pd.read_csv(
         filename, skiprows=1)
 
-
+    print(type(data))
+    print(data)
 except:
     print("File not found")
