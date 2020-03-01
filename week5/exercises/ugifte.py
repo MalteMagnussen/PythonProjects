@@ -34,9 +34,9 @@ try:
     data = pd.read_csv(
         filename, sep=";")
     print("__________________\nInside Try Statement:\n")
-    print("Type:", type(data))
+    # print("Type:", type(data))
     print("Columns:", data.columns)
-    print("Iloc[0]:", data.iloc[3, :])
+    # print("Iloc[0]:", data.iloc[3, :])
     fraskilt = data.loc[data.CIVILSTAND ==
                         "Fraskilt"]["INDHOLD"].values.tolist()
     print("Fraskilte\n", fraskilt)
@@ -62,9 +62,8 @@ try:
     plt.xlabel("Tid", fontsize=14)
     plt.ylabel("% af totalbefolkningen er der skilte", fontsize=14)
     # Set size of tick labels.
-
     plt.tick_params(axis='both', labelsize=14)
-
+    # Save plot as .png and show it
     plt.savefig('skilte.png', bbox_inches='tight')
     plt.show()
 
