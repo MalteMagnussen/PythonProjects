@@ -11,12 +11,12 @@ else:
     print("File not exist")
     print("Fetching csv from api.statbank.dk")
     url = 'https://api.statbank.dk/v1/data/FOLK1A/CSV?delimiter=Semicolon&CIVILSTAND=F%2CTOT&Tid=*'
-    response = requests.get(url, params={'downloadformat': 'csv'})
+    response = requests.get(url)  # , params={'downloadformat': 'csv'}
 
     print("Headers:", response.headers)
 
     # get the filename
-    fname = response.headers['Content-Disposition'].split('=')[1]
+    fname = response.headers['content-disposition'].split('=')[1]
     filename = fname
     print("Filename:", fname)
 
@@ -34,9 +34,10 @@ else:
 try:
     # Read CSV
     data = pd.read_csv(
-        filename, skiprows=1)
-
-    print(type(data))
-    print(data)
+        filename, skiprows=1, sep=";")
+    print("__________________\nInside Try Statement:\n")
+    print("Type:", type(data))
+    print("Columns:", data.columns)
+    print("Iloc[0]:", data.iloc[0, :])
 except:
     print("File not found")
