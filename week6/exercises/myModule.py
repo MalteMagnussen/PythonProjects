@@ -21,6 +21,7 @@ from urllib.parse import urlparse
 class download():
     def __init__(self, url_list: list(string)):
         self._url_list = url_list
+        self.high = len(url_list)
 
     def download(self, url, filename):
         # Raises NotFoundException when url returns 404
@@ -33,6 +34,7 @@ class download():
             filename = os.path.basename(result.path)
             if filename not in self._url_list:
                 self._url_list.append(filename)
+                self.high += 1
 
         try:
             response = requests.get(url)
@@ -54,6 +56,7 @@ class download():
     def multi_download(self, url_list: list(string)):
         # multi_download(url_list) uses threads to download multiple urls as text and stores filenames as a property
         self._url_list = url_list
+        self.high = len(url_list)
 
         # We can use a with statement to ensure threads are cleaned up promptly
         with concurrent.futures.ThreadPoolExecutor(max_workers=len(url_list)) as executor:
@@ -69,3 +72,20 @@ class download():
                     print('%r generated an exception: %s' % (url, exc))
                 else:
                     print('%r page is %d bytes' % (url, len(data)))
+
+    def getUrlList(self):
+        return self._url_list
+
+    def __iter__(self):
+        # iter() returns an iterator
+        return self
+
+    def __next__(self):  # Python 2: def next(self)
+        # next() returns each of the downloaded files
+        self.current += 1
+        if self.current < self.high:
+            item = self.getUrlList()
+            filename = item[self.current]
+            with open(filename) as file:
+                return file.read()
+        raise StopIteration
