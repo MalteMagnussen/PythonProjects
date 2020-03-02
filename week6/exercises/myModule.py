@@ -113,21 +113,23 @@ class download():
         # hardest_read() returns the filename of the text with the
         # highest vowel score
         # (use all the cpu cores on the computer for this work.)
-        from multiprocessing import Pool
-        pool = Pool(len(self.getUrlList()))
+        import multiprocessing
+        with multiprocessing.Pool(len(self.getUrlList())) as pool:
 
-        dictionary = {}
-        for file in self.next():
-            filename = file[0]
-            filetext = file[1]
-            dictionary[filename] = pool.apply_async(avg_vowels, filetext)
+            data = ()
+            for file in self.next():
+                filename = file[0]
+                filetext = file[1]
+                data.append((filename, pool.apply(avg_vowels, filetext)))
 
-        highestRead = ""
-        highestScore = 0
+            pool.join()
 
-        for x in dictionary.keys():
-            if dictionary[x].get(timeout=2) > highestScore:
-                highestScore = dictionary[x]
-                highestRead = x
+            highestRead = ""
+            highestScore = 0
 
-        return highestRead
+            for element in data:
+                if element[1] > highestScore:
+                    highestScore = element[1]
+                    highestRead = element[0]
+
+            return highestRead
