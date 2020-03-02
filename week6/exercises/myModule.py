@@ -103,7 +103,10 @@ class download():
     def avg_vowels(self, text):
         # avg_vowels(text) - a rough estimate on readability
         # returns average number of vowels in the words of the text
-        pass
+        import re
+        vowels = len(re.findall(r'[aeiouæøå]', text, flags=re.IGNORECASE))
+        words = len(text.split(" "))
+        return words/vowels
 
     def hardest_read(self):
         # hardest_read() returns the filename of the text with the
