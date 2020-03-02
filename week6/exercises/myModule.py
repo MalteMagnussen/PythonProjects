@@ -30,7 +30,9 @@ class download():
         class NotFoundException(Exception):
             # How do you implement an exception? What is it supposed to do, and how do you make it do it?
             print("NotFoundException: File wasn't found. ¯\_(ツ)_/¯")
-            pass
+
+            def __init__(self, *args, **kwargs):
+                Exception.__init__(self, *args, **kwargs)
 
         if filename is None:
             result = urlparse(url)
@@ -106,5 +108,5 @@ class download():
     def hardest_read(self):
         # hardest_read() returns the filename of the text with the
         # highest vowel score
-        # (use all the cpu cores on the computer for this work.) ??? How ??? How do I even know how many I have?
+        # (use all the cpu cores on the computer for this work.)
         pass
