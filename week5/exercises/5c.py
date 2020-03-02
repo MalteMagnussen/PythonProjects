@@ -2,6 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Took me 3 hours for this alone.
+# I really dislike that my IDE can't help at all.
+# Have to google every line of code.
+
 url = "https://api.statbank.dk/v1/data/FOLK1A/CSV?delimiter=Semicolon&OMR%C3%85DE=101&K%C3%98N=TOT&ALDER=IALT&CIVILSTAND=G%2CU%2CF&Tid=2008K1%2C2020K1"
 
 # OMRÅDE;KØN;ALDER;CIVILSTAND;TID;INDHOLD
