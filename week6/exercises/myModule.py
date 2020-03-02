@@ -9,6 +9,7 @@
 # filelist_generator(url_list) returns a generator to loop through the filenames
 # avg_vowels(text) - a rough estimate on readability returns average number of vowels in the words of the text
 # hardest_read() returns the filename of the text with the highest vowel score (use all the cpu cores on the computer for this work.
+
 import requests
 #import NotFoundException
 import threading
@@ -27,6 +28,8 @@ class download():
         # Raises NotFoundException when url returns 404
 
         class NotFoundException(Exception):
+            # How do you implement an exception? What is it supposed to do, and how do you make it do it?
+            print("NotFoundException: File wasn't found. ¯\_(ツ)_/¯")
             pass
 
         if filename is None:
@@ -89,3 +92,19 @@ class download():
             with open(filename) as file:
                 return file.read()
         raise StopIteration
+
+    def filelist_generator(self, url_list):
+        # filelist_generator(url_list)
+        # returns a generator to loop through the filenames
+        return (url for url in self._url_list)
+
+    def avg_vowels(self, text):
+        # avg_vowels(text) - a rough estimate on readability
+        # returns average number of vowels in the words of the text
+        pass
+
+    def hardest_read(self):
+        # hardest_read() returns the filename of the text with the
+        # highest vowel score
+        # (use all the cpu cores on the computer for this work.) ??? How ??? How do I even know how many I have?
+        pass
