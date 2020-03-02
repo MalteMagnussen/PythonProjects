@@ -92,13 +92,13 @@ class download():
             item = self.getUrlList()
             filename = item[self.current]
             with open(filename) as file:
-                return file.read()
+                return (filename, file.read())
         raise StopIteration
 
     def filelist_generator(self, url_list):
         # filelist_generator(url_list)
         # returns a generator to loop through the filenames
-        return (url for url in self._url_list)
+        return (url for url in self.getUrlList())
 
     def avg_vowels(self, text):
         # avg_vowels(text) - a rough estimate on readability
@@ -109,7 +109,25 @@ class download():
         return words/vowels
 
     def hardest_read(self):
+
         # hardest_read() returns the filename of the text with the
         # highest vowel score
         # (use all the cpu cores on the computer for this work.)
-        pass
+        from multiprocessing import Pool
+        pool = Pool(len(self.getUrlList()))
+
+        dictionary = {}
+        for file in self.next():
+            filename = file[0]
+            filetext = file[1]
+            dictionary[filename] = pool.apply_async(avg_vowels, filetext)
+
+        highestRead = ""
+        highestScore = 0
+
+        for x in dictionary.keys():
+            if dictionary[x].get(timeout=2) > highestScore:
+                highestScore = dictionary[x]
+                highestRead = x
+
+        return highestRead
