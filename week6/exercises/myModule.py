@@ -11,7 +11,7 @@
 # hardest_read() returns the filename of the text with the highest vowel score (use all the cpu cores on the computer for this work.
 
 import requests
-#import NotFoundException
+# import NotFoundException
 import threading
 import concurrent
 import multiprocessing
@@ -20,25 +20,27 @@ from urllib.parse import urlparse
 
 
 class download():
-    def __init__(self, url_list: list(string)):
+    def __init__(self, url_list):
         self._url_list = url_list
         self.high = len(url_list)
 
-    def download(self, url, filename):
+    current = 0
+
+    def singleDownload(self, url, filename=None):
         # Raises NotFoundException when url returns 404
 
         class NotFoundException(Exception):
             # How do you implement an exception? What is it supposed to do, and how do you make it do it?
-            print("NotFoundException: File wasn't found. ¯\_(ツ)_/¯")
+            # print("NotFoundException: File wasn't found. ¯\_(ツ)_/¯")
 
             def __init__(self, *args, **kwargs):
                 Exception.__init__(self, *args, **kwargs)
 
         if filename is None:
-            result = urlparse(url)
-            filename = os.path.basename(result.path)
-            if filename not in self._url_list:
-                self._url_list.append(filename)
+            #result = urlparse(url)
+            filename = os.path.basename(urlparse(url).path)
+            if url not in self._url_list:
+                self._url_list.append(url)
                 self.high += 1
 
         try:
@@ -58,7 +60,7 @@ class download():
                 for chunk in response.iter_content(chunk_size=1024):
                     fd.write(chunk)
 
-    def multi_download(self, url_list: list(string)):
+    def multi_download(self, url_list):
         # multi_download(url_list) uses threads to download multiple urls as text and stores filenames as a property
         self._url_list = url_list
         self.high = len(url_list)
@@ -67,16 +69,16 @@ class download():
         with concurrent.futures.ThreadPoolExecutor(max_workers=len(url_list)) as executor:
             # Start the load operations and mark each future with its URL
             future_to_url = {executor.submit(
-                download, url): url for url in url_list}
+                self.singleDownload, url): url for url in url_list}
             for future in concurrent.futures.as_completed(future_to_url):
                 url = future_to_url[future]
                 try:
-                    data = future.result()
+                    future.result()
                     # print(data)
                 except Exception as exc:
                     print('%r generated an exception: %s' % (url, exc))
                 else:
-                    print('%r page is %d bytes' % (url, len(data)))
+                    print(url)
 
     def getUrlList(self):
         return self._url_list
@@ -90,8 +92,8 @@ class download():
         self.current += 1
         if self.current < self.high:
             item = self.getUrlList()
-            filename = item[self.current]
-            with open(filename) as file:
+            filename = os.path.basename(urlparse(item[self.current]).path)
+            with open(filename, encoding="utf-8") as file:
                 return (filename, file.read())
         raise StopIteration
 
@@ -116,11 +118,13 @@ class download():
         import multiprocessing
         with multiprocessing.Pool(len(self.getUrlList())) as pool:
 
+            #iterable = iter(self.iter())
+
             data = ()
-            for file in self.next():
+            for file in self.__next__():
                 filename = file[0]
                 filetext = file[1]
-                data.append((filename, pool.apply(avg_vowels, filetext)))
+                data = (*data, (filename, pool.apply(self.avg_vowels, filetext)))
 
             pool.join()
 
