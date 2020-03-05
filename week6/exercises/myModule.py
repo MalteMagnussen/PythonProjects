@@ -93,7 +93,8 @@ class download():
         if self.current < self.high:
             item = self.getUrlList()
             filename = os.path.basename(urlparse(item[self.current]).path)
-            with open(filename, encoding="utf-8") as file:
+            with open(filename, encoding="utf-8") as file:  #
+                print("in __next__ with open("+filename+")")
                 return (filename, file.read())
         raise StopIteration
 
@@ -121,12 +122,14 @@ class download():
             #iterable = iter(self.iter())
 
             data = ()
-            for file in self.__next__():
+            for file in self.__iter__():
                 filename = file[0]
                 filetext = file[1]
-                data = (*data, (filename, pool.apply(self.avg_vowels, filetext)))
+                #print("In for file in self.__iter__(): "+filetext)
+                data = (
+                    *data, (filename, pool.apply(self.avg_vowels, args=[filetext])))
 
-            pool.join()
+            # pool.join()
 
             highestRead = ""
             highestScore = 0
