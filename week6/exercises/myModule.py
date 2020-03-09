@@ -23,8 +23,7 @@ class download():
     def __init__(self, url_list):
         self._url_list = url_list
         self.high = len(url_list)
-
-    current = 0
+        self.current = 0
 
     def singleDownload(self, url, filename=None):
         # Raises NotFoundException when url returns 404
@@ -52,13 +51,19 @@ class download():
 
             # If the response was successful, no Exception will be raised
             response.raise_for_status()
+
+            with open(filename, 'wb') as fd:
+                for chunk in response.iter_content(chunk_size=1024):
+                    fd.write(chunk)
+
         except Exception as err:
             print(f'Other error occurred: {err}')
         else:
             print('Success!')
-            with open(filename, 'wb') as fd:
-                for chunk in response.iter_content(chunk_size=1024):
-                    fd.write(chunk)
+
+            # with open(filename, 'wb') as fd:
+            #     for chunk in response.iter_content(chunk_size=1024):
+            #         fd.write(chunk)
 
     def multi_download(self, url_list):
         # multi_download(url_list) uses threads to download multiple urls as text and stores filenames as a property
@@ -101,14 +106,14 @@ class download():
     def filelist_generator(self, url_list):
         # filelist_generator(url_list)
         # returns a generator to loop through the filenames
-        return (url for url in self.getUrlList())
+        yield (url for url in self.getUrlList())
 
     def avg_vowels(self, text):
         # avg_vowels(text) - a rough estimate on readability
         # returns average number of vowels in the words of the text
         import re
         vowels = len(re.findall(r'[aeiouæøå]', text, flags=re.IGNORECASE))
-        words = len(text.split(" "))
+        words = len(text.split())
         return words/vowels
 
     def hardest_read(self):
