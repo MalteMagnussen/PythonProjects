@@ -82,8 +82,39 @@ def getExpensiveCars():
     # i decending order og vis dem med et bar chart"
     from selenium import webdriver
 
+    # Open browser.
     browser = webdriver.Firefox()
+    # Go to website
     browser.get(baseUrl)
+    # Wait for everything to be loaded
+    browser.implicitly_wait(2)
+    print("PAGE LOADED")
+
+    # After this click, is cheapest cars first
+    thead = browser.find_element_by_class_name("sorting")
+    print("\nthead\n", thead.get_attribute("innerHTML"))
+    spans = thead.find_elements_by_class_name("human-ref")
+    print("\nSpans\n", spans)
+    printSpan = spans[4]
+    print("\nprintSpan\n", printSpan)
+    print("\nShould say 'Pris'\n", printSpan.get_attribute("innerHTML"))
+    printSpan.click()
+    browser.implicitly_wait(2)
+    print("WRONG ORDER")
+
+    # After this click, should be most expensive cars first
+    thead = browser.find_element_by_class_name("sorting")
+    print("\nthead\n", thead.get_attribute("innerHTML"))
+    spans = thead.find_elements_by_class_name("human-ref")
+    print("\nSpans\n", spans)
+    printSpan = spans[4]
+    print("\nprintSpan\n", printSpan)
+    print("\nShould say 'Pris'\n", printSpan.get_attribute("innerHTML"))
+    printSpan.click()
+    browser.implicitly_wait(2)
+    print("PROPER ORDER NOW")
+
+    # Now I need to print the first 5 cars.
 
 
 getExpensiveCars()
