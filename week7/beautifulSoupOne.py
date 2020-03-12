@@ -9,7 +9,7 @@ def getPages():
     r = requests.get(url)
     r.raise_for_status()
 
-    soup = bs4.BeautifulSoup(r.text, 'html.parser')
+    soup = bs4.BeautifulSoup(r.text, "html.parser")
     pages = soup.findAll("button", {"class": "pagination__item"})
 
     numberOfPages = pages[-2].getText()
@@ -25,11 +25,11 @@ def getTitles(soup):
     print([text.getText() for text in titles])
 
 
-for page in tqdm(range(1, getPages()+1)):
+for page in tqdm(range(1, getPages() + 1)):
     # print("PAGE:{}".format(page))
     url = "https://www.dr.dk/radio/programmer?side={}".format(page)
     r = requests.get(url)
     r.raise_for_status()
 
-    soup = bs4.BeautifulSoup(r.text, 'html.parser')
+    soup = bs4.BeautifulSoup(r.text, "html.parser")
     getTitles(soup)

@@ -33,6 +33,7 @@ def getSoup(url):
 
 
 def getCarsCount():
+    """1. Hvor mange brugte biler er der at vælge i mellem"""
     soup = getSoup(baseUrl)
     divs = soup.findAll("div", {"class": "navigator radioNavigator modulePanel"})
     # print("divs: \n", divs)
@@ -42,4 +43,35 @@ def getCarsCount():
     print("Task one: ", "\n    Number of Cars for Sale: ", cars)
 
 
-getCarsCount()
+# getCarsCount()
+
+
+def getFords():
+    """2. Udskriv alle biler af mærket Ford"""
+    url = baseUrl + "/maerke-ford"
+    page = "/side-"
+    # Example for request: url+page+numberInLoop
+    # class="trackClicks a-page-link" data-ga-act="click" data-ga-lbl="paging-number"
+    pagesSoup = getSoup(url)
+    a = pagesSoup.findAll(
+        "a",
+        {
+            "class": "trackClicks",
+            "data-ga-act": "click",
+            "data-ga-lbl": "paging-number",
+        },
+    )
+    # print(a[-1])
+    filterPages = filter(str.isdigit, a[-1].text)
+    numberOfPages = int("".join(filterPages))
+    print("Number of Pages: ", numberOfPages)
+    for pageNumber in tqdm(range(1, numberOfPages + 1)):
+        soup = getSoup(url + page + str(pageNumber))
+        cars = soup.findAll("tr", {"class": "dbaListing listing"})
+        for car in cars:
+            a = car.findAll("a", {"class": "listingLink"})
+            print(a[1].text.encode("utf-8"))
+            print("\n")
+
+
+getFords()
