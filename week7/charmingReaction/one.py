@@ -74,4 +74,10 @@ def getFords():
             print("\n")
 
 
-getFords()
+# getFords()
+
+
+def getExpensiveCars():
+    # "3. Åben de 5 dyreste biler med selenium
+    # i decending order og vis dem med et bar chart"
+    pass
