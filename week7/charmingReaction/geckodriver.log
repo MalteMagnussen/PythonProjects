@@ -124,3 +124,82 @@ JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/pla
 
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1584034031671	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Malte\\AppData\\Local\\Temp\\rust_mozprofileiORatO"
+1584034032021	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584034032357	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584034032357	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584034032357	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584034032357	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584034034671	Marionette	INFO	Listening on port 53481
+1584034034784	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+1584034069174	Marionette	INFO	Stopped listening on port 53481
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1584034184002	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Malte\\AppData\\Local\\Temp\\rust_mozprofile3gCnD6"
+1584034184314	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584034184651	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584034184651	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584034184651	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584034184651	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584034186971	Marionette	INFO	Listening on port 53753
+1584034187120	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+1584034203595	Marionette	INFO	Stopped listening on port 53753
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584034229720	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Malte\\AppData\\Local\\Temp\\rust_mozprofile1qS6Mw"
+1584034230040	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584034230386	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584034230386	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584034230386	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584034230386	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584034232624	Marionette	INFO	Listening on port 53883
+1584034232830	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+1584034251434	Marionette	INFO	Stopped listening on port 53883
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584034304354	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Malte\\AppData\\Local\\Temp\\rust_mozprofileYSVBTh"
+1584034304667	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584034305111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584034305111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584034305111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584034305111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584034308028	Marionette	INFO	Listening on port 54080
+1584034308468	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js, line 1: unreachable code after return statement
+JavaScript warning: https://cdn.bluebillywig.com/apps/player/20200311.115651/player.js line 287 > eval, line 1: unreachable code after return statement
+1584034528474	Marionette	INFO	Stopped listening on port 54080
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

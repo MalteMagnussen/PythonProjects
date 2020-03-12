@@ -82,39 +82,50 @@ def getExpensiveCars():
     # i decending order og vis dem med et bar chart"
     from selenium import webdriver
 
+    waitingTime = 2
+
     # Open browser.
     browser = webdriver.Firefox()
     # Go to website
     browser.get(baseUrl)
     # Wait for everything to be loaded
-    browser.implicitly_wait(2)
     print("PAGE LOADED")
+    browser.implicitly_wait(waitingTime)
+
+    def clickSortByPrice(times):
+        thead = browser.find_element_by_class_name("sorting")
+        # print("\nthead\n", thead.get_attribute("innerHTML"))
+        spans = thead.find_elements_by_class_name("human-ref")
+        # print("\nSpans\n", spans)
+        printSpan = spans[4]
+        # print("\nprintSpan\n", printSpan)
+        # print("\nShould say 'Pris'\n", printSpan.get_attribute("innerHTML"))
+        printSpan.click()
+        print("CLICKED PRICE SORTING", times)
+        browser.implicitly_wait(waitingTime)
+        # print("PROPER ORDER NOW")
 
     # After this click, is cheapest cars first
-    thead = browser.find_element_by_class_name("sorting")
-    print("\nthead\n", thead.get_attribute("innerHTML"))
-    spans = thead.find_elements_by_class_name("human-ref")
-    print("\nSpans\n", spans)
-    printSpan = spans[4]
-    print("\nprintSpan\n", printSpan)
-    print("\nShould say 'Pris'\n", printSpan.get_attribute("innerHTML"))
-    printSpan.click()
-    browser.implicitly_wait(2)
-    print("WRONG ORDER")
+    clickSortByPrice("ONCE")
 
     # After this click, should be most expensive cars first
-    thead = browser.find_element_by_class_name("sorting")
-    print("\nthead\n", thead.get_attribute("innerHTML"))
-    spans = thead.find_elements_by_class_name("human-ref")
-    print("\nSpans\n", spans)
-    printSpan = spans[4]
-    print("\nprintSpan\n", printSpan)
-    print("\nShould say 'Pris'\n", printSpan.get_attribute("innerHTML"))
-    printSpan.click()
-    browser.implicitly_wait(2)
-    print("PROPER ORDER NOW")
+    clickSortByPrice("TWICE")
+
+    # Nu er "Åben de 5 dyreste biler med selenium
+    # i decending order" denne del done.
 
     # Now I need to print the first 5 cars.
+    html = browser.page_source
+    soup = bs4.BeautifulSoup(html, "html.parser")
+    cars = soup.findAll("tr", {"class": "dbaListing listing"})
+    for index in range(0, 5):
+        car = cars[index]
+        a = car.findAll("a", {"class": "listingLink"})
+        print(a[1].text.encode("utf-8"))
+        print("\nPRICE: ", a[2].text.encode("utf-8"))
+        print(
+            "\n_______________________________________________________________________________________\n"
+        )
 
 
 getExpensiveCars()
