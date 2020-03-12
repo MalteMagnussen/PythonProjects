@@ -80,4 +80,10 @@ def getFords():
 def getExpensiveCars():
     # "3. Åben de 5 dyreste biler med selenium
     # i decending order og vis dem med et bar chart"
-    pass
+    from selenium import webdriver
+
+    browser = webdriver.Firefox()
+    browser.get(baseUrl)
+
+
+getExpensiveCars()
