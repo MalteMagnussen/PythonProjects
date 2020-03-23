@@ -1,9 +1,9 @@
-import webget
+from webget import download
 import networkx as nx
 import gzip
 import numpy as np
 
-# webget.download("https://snap.stanford.edu/data/twitter_combined.txt.gz")
+# download("https://snap.stanford.edu/data/twitter_combined.txt.gz")
 
 with gzip.open("twitter_combined.txt.gz", "r") as f:
     graph = nx.read_edgelist(f)
