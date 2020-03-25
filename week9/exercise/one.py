@@ -29,6 +29,10 @@ def download_facebook_file():
 
 download_facebook_file()
 
+with gzip.open(filename, "r") as f:
+    print(f"Reading file")
+    graph = nx.read_edgelist(f)
+
 print()
 print()
 # def multiprocessing(func, args, workers):
@@ -36,13 +40,8 @@ print()
 #         res = ex.map(func, args)
 #     return list(res)
 
-
 # Exercise 2
 print("Exercise 2")
-with gzip.open(filename, "r") as f:
-    print(f"Reading file")
-    graph = nx.read_edgelist(f)
-
 print(nx.info(graph))
 # g.degree giver antallet af edges som støder op mod noden.
 deg_vec = np.array([graph.degree(n) for n in graph.nodes()])
@@ -66,7 +65,7 @@ nx.draw(
     node_size=1,
     width=0.05,
     cmap=plt.cm.Blues,
-    with_labels=True,
+    with_labels=False,
     node_color=range(len(graph)),
 )
 plt.show()
