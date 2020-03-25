@@ -81,7 +81,7 @@ def draw_graph(graph):
     )
 
 
-graph = create_graph()
+# graph = create_graph()
 draw_graph(graph)
 
 # nx.write_gml(graph, './social_network.gml')
@@ -98,4 +98,3 @@ in_deg_vec.max()  # return largest value
 print(np.argmax(in_deg_vec))
 idx = np.argmax(in_deg_vec)  # returns the index of the largest value
 print(graph.nodes[idx]["name"])
-
