@@ -39,3 +39,63 @@ with gzip.open(filename, "r") as f:
     graph = nx.read_edgelist(f)
 
 print(nx.info(graph))
+
+# bash
+# conda install -y networkx
+# conda install -c anaconda pygraphviz
+
+import warnings
+import networkx as nx
+import matplotlib.pyplot as plt
+from networkx.drawing.nx_agraph import graphviz_layout, write_dot
+
+
+def create_graph():
+    graph = nx.DiGraph()
+    graph.clear()
+
+    # add node by node, needed to add attributes...
+    print(len(all_names_list))
+
+    for idx, name_pair in enumerate(all_names_list):
+        graph.add_node(idx, name=" ".join(name_pair))
+
+    # graph.add_nodes_from(all_names_list)
+    graph.add_edges_from(endorsements)
+
+    return graph
+
+
+import pygraphviz
+
+
+def draw_graph(graph):
+    nx.draw(
+        graph,
+        pos=graphviz_layout(graph),
+        node_size=30,
+        width=0.05,
+        cmap=plt.cm.Blues,
+        with_labels=True,
+        node_color=range(len(graph)),
+    )
+
+
+graph = create_graph()
+draw_graph(graph)
+
+# nx.write_gml(graph, './social_network.gml')
+
+
+# Who is the most interesting person in our network?¶
+# Likely, you are tempted to find the person in the graph, which has the highest in-degree. For example with code similar to the following.
+
+import numpy as np
+
+in_deg_vec = np.array([graph.in_degree(n) for n in graph.nodes()])
+print(in_deg_vec)
+in_deg_vec.max()  # return largest value
+print(np.argmax(in_deg_vec))
+idx = np.argmax(in_deg_vec)  # returns the index of the largest value
+print(graph.nodes[idx]["name"])
+
