@@ -60,7 +60,16 @@ print()
 print()
 print("Exercise 3")
 # Exercise 3
-nx.draw_shell(graph)
+nx.draw(
+    graph,
+    pos=graphviz_layout(graph),
+    node_size=1,
+    width=0.05,
+    cmap=plt.cm.Blues,
+    with_labels=True,
+    node_color=range(len(graph)),
+)
+plt.show()
 
 # bash
 # conda install -y networkx
