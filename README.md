@@ -10,3 +10,6 @@
 4. [Week 4](https://github.com/MalteMagnussen/PythonProjects/tree/master/week4/Exercises)
 5. [Week 5](https://github.com/MalteMagnussen/PythonProjects/tree/master/week5/exercises)
 6. [Week 6](https://github.com/MalteMagnussen/PythonProjects/tree/master/week6/exercises)
+7. [Week 7](https://github.com/MalteMagnussen/PythonProjects/tree/master/week7/charmingReaction)
+8. [Week 8](https://github.com/MalteMagnussen/PythonProjects/tree/master/week8)
+9. [Week 9](https://github.com/MalteMagnussen/PythonProjects/tree/master/week9/exercise)
