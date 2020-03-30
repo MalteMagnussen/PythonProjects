@@ -7,7 +7,7 @@ import pandas as pd
 # Answer:
 df = pd.read_csv("train.csv")
 print("read_csv")
-print(df)
+print(df.head())
 
 # Task: Drop the PassengerId, Name, Ticket, Cabin columns from the dataframe
 # Answer:
@@ -15,4 +15,4 @@ print(df)
 df.drop(["PassengerId", "Name", "Ticket", "Cabin"], "columns", inplace=True)
 print()
 print(".drop inplace=true")
-print(df)
+print(df.head())
