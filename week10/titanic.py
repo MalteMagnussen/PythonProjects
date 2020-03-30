@@ -77,10 +77,25 @@ from sklearn.cluster import estimate_bandwidth
 # at give os den estimerede bedst egnede vinduesstørrelse
 print()
 print("Estimate Bandwidth")
-print(estimate_bandwidth(titanic_data))
+bandwidth = estimate_bandwidth(titanic_data)
+print(bandwidth)
 
 
 # Task: Fit data to a meanshift model
+from sklearn.cluster import MeanShift
+import numpy as np
+
+# Så "meanshift" er centrum af den cirkel med radius "bandwidth" der i et plot dækker over flest punkter
+analyzer = MeanShift(bandwidth=30)
+fit = analyzer.fit(titanic_data)
+print()
+print("fit\n", fit)
+labels = analyzer.labels_
+print()
+print("labels\n", labels)
+print("\n\nnp.unique(labels)\n", np.unique(labels))
+
+
 # Task: How many clusters do we get
 # Task: Add a column to the titanic dataframe with the cluster label for each person
 # Task: Get mean values of each cluster group
