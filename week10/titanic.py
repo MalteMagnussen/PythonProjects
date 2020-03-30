@@ -104,6 +104,21 @@ numberOfClusters = len(uniqueLabels)
 print(numberOfClusters)
 
 # Task: Add a column to the titanic dataframe with the cluster label for each person
+# We will add a new column in dataset which shows the cluster the data of a particular row belongs to.
+print()
+titanic_data["cluster_group"] = np.nan
+data_length = len(titanic_data)
+for i in range(data_length):  # loop 714 rows
+    titanic_data.iloc[i, titanic_data.columns.get_loc("cluster_group")] = labels[
+        i
+    ]  # set the cluster label on each row
+print("Data frame with cluster group")
+print(titanic_data.head())
+
+
 # Task: Get mean values of each cluster group
+print()
+print("Mean values of each cell. ")
+print(titanic_data.describe())
 # Task: Add a column with the size of each cluster group.
 # Task: Write out conclusion from the aggregated data.
