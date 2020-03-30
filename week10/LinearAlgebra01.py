@@ -14,23 +14,26 @@ shop_prices = {
 }
 
 
-df = pd.DataFrame(shoppers).T
+dfP = pd.DataFrame(shoppers).T
 
-print("\ndf\n", df)
+print("\ndf\n", dfP)
 
-P = np.array(df)
+# P = np.array(df)
 
-print("\nP\n", P)
+# print("\nP\n", P)
 
-df = pd.DataFrame(shop_prices).T
+dfQ = pd.DataFrame(shop_prices)
 
-print("\ndf\n", df)
+print("\ndf\n", dfQ)
 
-Q = np.array(df)
+# Q = np.array(df)
 
-print("\nQ\n", Q)
+# print("\nQ\n", Q)
 
-R = P.dot(Q)
+# R = P.dot(Q)
+
+# print("\nR\n", R)
+
+R = dfP.dot(dfQ)
 
 print("\nR\n", R)
-
