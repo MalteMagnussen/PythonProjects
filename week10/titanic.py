@@ -75,6 +75,8 @@ from sklearn.cluster import estimate_bandwidth
 # Det kan være svært at se ud af data hvad der er den optimale vinduestørrelse,
 # så derfor har vi metoden til (baseret på vores data)
 # at give os den estimerede bedst egnede vinduesstørrelse
+print()
+print("Estimate Bandwidth")
 print(estimate_bandwidth(titanic_data))
 
 
