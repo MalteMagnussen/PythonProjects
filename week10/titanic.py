@@ -93,10 +93,16 @@ print("fit\n", fit)
 labels = analyzer.labels_
 print()
 print("labels\n", labels)
-print("\n\nnp.unique(labels)\n", np.unique(labels))
+uniqueLabels = np.unique(labels)
+print("\n\nnp.unique(labels)\n", uniqueLabels)
 
 
 # Task: How many clusters do we get
+print()
+print("Number of clusters:")
+numberOfClusters = len(uniqueLabels)
+print(numberOfClusters)
+
 # Task: Add a column to the titanic dataframe with the cluster label for each person
 # Task: Get mean values of each cluster group
 # Task: Add a column with the size of each cluster group.
