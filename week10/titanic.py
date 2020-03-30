@@ -47,13 +47,35 @@ print(titanic_data.head())
 # Find missing values in the data and drop those rows:
 print()
 print("rows before drop n/a", len(titanic_data))
+# Denne linje gør egentlig ikke noget ved datasettet.
+# Det er bare for at få vist alle de rækker hvor der er null værdier i.
+# Prøv at printe missing så kan de se at du får alle de rækker
+# hvor der er passagerer der ikke har en alder opgivet
 missing = titanic_data[titanic_data.isnull().any(axis=1)]
+print()
+print("missing")
+print(missing.head())
+# Denne linje er den der dropper alle rækker med null værdier i
 titanic_data = titanic_data.dropna()
+print()
 print("rows after", len(titanic_data))
-titanic_data
+# print(titanic_data.head())
 
 
 # Task: what is the best bandwidth to use for our dataset? Use sklearn
+# what is the best bandwidth to use for our dataset?
+# The smaller values of bandwith result in tall skinny kernels & larger values result in short fat kernels.
+
+# Bandwith er størrelsen på det vindue der kører ned over feature spacet
+# og leder efter den højeste tæthed af nabo punkter (vektorer)
+from sklearn.cluster import estimate_bandwidth
+
+# Det kan være svært at se ud af data hvad der er den optimale vinduestørrelse,
+# så derfor har vi metoden til (baseret på vores data)
+# at give os den estimerede bedst egnede vinduesstørrelse
+print(estimate_bandwidth(titanic_data))
+
+
 # Task: Fit data to a meanshift model
 # Task: How many clusters do we get
 # Task: Add a column to the titanic dataframe with the cluster label for each person
