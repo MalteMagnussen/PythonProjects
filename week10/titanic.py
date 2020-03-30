@@ -37,6 +37,8 @@ print(titanic_data.head())
 # Task: One-hot-encode the Embarked column (3 different ports in England)
 # Answer:
 # One-hot encoding of 'Embarked' with pd.get_dummies
+# one-hot encoding:
+# Imagine n features. One-hot encoding means setting one feature to 1 and the rest to 0.
 titanic_data = pd.get_dummies(titanic_data, columns=["Embarked"])
 print()
 print("One hot encoding")
