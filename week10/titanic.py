@@ -120,5 +120,42 @@ print(titanic_data.head())
 print()
 print("Mean values of each cell. ")
 print(titanic_data.describe())
+
+
+print()
 # Task: Add a column with the size of each cluster group.
+# Grouping passengers by Cluster
+titanic_cluster_data = titanic_data.groupby(["cluster_group"]).mean()
+# Count of passengers in each cluster
+titanic_cluster_data["Counts"] = pd.Series(
+    titanic_data.groupby(["cluster_group"]).size()
+)
+print("Titanic cluster data")
+print(titanic_cluster_data)
+
+
+
 # Task: Write out conclusion from the aggregated data.
+
+# Conclusion
+# 1. Cluster 0
+#   * Have 558 passengers
+#   * Survival rate is 33%(very low) means most of them didn't survive
+#   * They belong to the lower classes 2nd and 3rd class mostly and are mostly male .
+#   * The average fare paid is $15
+# 2. Cluster 1
+#   * Have 108 passengers
+#   * Survival rate is 61% means a little more than half of them survived
+#   * They are mostly from 1st and 2nd class
+#   * The average fare paid is $65
+# 3. Cluster 2 i.e the 3rd Cluster
+#   * Have 30 passengers
+#   * Survival rate is 73% means most of them survived
+#   * They are mostly from 1st class
+#   * The average fare paid is $131 (high fare)
+# 4. Cluster 3 i.e the 4th Cluster
+#   * Have 15 passengers
+#   * Survival rate is 73% means most of them survived
+#   * They are mostly from 1st class and are mostly female
+#   * The average fare paid is $239 (which is far higher than the 1st cluster average fare)
+#   * The last cluster has just 3 datapoints so it is not that significant hence we can ignore for data analysis
