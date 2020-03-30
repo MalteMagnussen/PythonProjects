@@ -16,5 +16,21 @@ shop_prices = {
 
 df = pd.DataFrame(shoppers).T
 
-print(df)
+print("\ndf\n", df)
+
+P = np.array(df)
+
+print("\nP\n", P)
+
+df = pd.DataFrame(shop_prices).T
+
+print("\ndf\n", df)
+
+Q = np.array(df)
+
+print("\nQ\n", Q)
+
+R = P.dot(Q)
+
+print("\nR\n", R)
 
