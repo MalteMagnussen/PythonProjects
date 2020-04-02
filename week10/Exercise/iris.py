@@ -7,7 +7,7 @@ pd.options.display.max_columns = None
 pd.options.display.max_rows = None
 
 #   1. load 'iris_data.csv' into a dataframe
-iris_data = pd.read_csv("train.csv")
+iris_data = pd.read_csv("iris_csv.csv")
 print("read_csv")
 print(iris_data.head())
 
