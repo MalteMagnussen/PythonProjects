@@ -1,5 +1,7 @@
 # Exercise 2 use meanshift on the iris dataset
 
+import numpy as np
+from sklearn.cluster import MeanShift, estimate_bandwidth
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -33,13 +35,31 @@ plt.scatter(virginica['Sepal length'],
             virginica['Sepal width'], c='g', label='virginica')
 # plt.gray() # To add greyscale.
 plt.legend(loc='upper left')
-plt.show()
+# plt.show()
 
 
 #   4. use: MeanShift and estimate_bandwidth from sklearn.cluster to first estimate bandwidth
 #           and then get the clusters (HINT: estimate_bandwidth() takes an argument: quantile set it to 0.2 for best result
 
+
+# Så "meanshift" er centrum af den cirkel med radius "bandwidth" der i et plot dækker over flest punkter
+df = iris_data.drop(['Species'], axis=1)
+bandwidth = estimate_bandwidth(df, quantile=0.2)
+print("\nBandwidth", bandwidth)
+
+ms = MeanShift(bandwidth=bandwidth)
+ms.fit(df)
+labels = ms.labels_
+cluster_centers = ms.cluster_centers_
+labels_unique = np.unique(labels)
+n_clusters_ = len(labels_unique)
+
 #   5. print out labels, cluster centers and number of clusters (as returned from the MeanShift function
+
+print()
+print("labels\n", labels)
+print("number of estimated clusters : %d" % n_clusters_)
+print("cluster centers:", cluster_centers)
 
 #   6. create a new scatter plot where each flower is colored according to cluster label
 
