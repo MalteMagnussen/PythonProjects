@@ -37,7 +37,7 @@ flowers = [setosa, versicolor, virginica]
 
 plt.figure(1)
 plt.clf()
-
+total_clusters = 0
 colors = cycle('brg')
 for flower, col in zip(flowers, colors):
     print("\n\n NEW FLOWER:")
@@ -52,7 +52,7 @@ for flower, col in zip(flowers, colors):
     # ), versicolor_shift['Sepal width'].tolist(),
     #     virginica_shift['Sepal length'].tolist(), virginica_shift['Sepal width'].tolist()])
     print("\n\n", df, "\n\n")
-    bandwidth = estimate_bandwidth(df, quantile=0.5)
+    bandwidth = estimate_bandwidth(df, quantile=0.2)
     print("\nBandwidth", bandwidth)
     ms = MeanShift(bandwidth=bandwidth)
     clustering = ms.fit(df)
@@ -60,6 +60,7 @@ for flower, col in zip(flowers, colors):
     cluster_centers = ms.cluster_centers_
     labels_unique = np.unique(labels)
     n_clusters_ = len(labels_unique)
+    total_clusters = total_clusters + n_clusters_
     #   5. print out labels, cluster centers and number of clusters (as returned from the MeanShift function
     print()
     print("labels\n", labels)
@@ -70,12 +71,14 @@ for flower, col in zip(flowers, colors):
     #   8. Compare the 2 plots (colored by actual labels vs. colored by cluster label)
     print("labels_unique:", labels_unique)
     print("MS:", ms)
+    for k in range(n_clusters_):
+        my_members = labels == k
+        cluster_center = cluster_centers[k]
+        plt.plot(df.iloc[my_members, 0],
+                 df.iloc[my_members, 1], col + '.')
+        plt.plot(cluster_center[0], cluster_center[1], 'o', markerfacecolor=col,
+                 markeredgecolor='k', markersize=14)
 
-    my_members = labels == 0
-    cluster_center = cluster_centers[0]
-    plt.plot(df.iloc[my_members, 0], df.iloc[my_members, 1], col + '.')
-    plt.plot(cluster_center[0], cluster_center[1], 'o', markerfacecolor=col,
-             markeredgecolor='k', markersize=14)
 
-plt.title('Estimated number of clusters: 3')
+plt.title(f'Estimated number of clusters: {total_clusters}')
 plt.show()
