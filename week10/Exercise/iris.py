@@ -1,5 +1,6 @@
 # Exercise 2 use meanshift on the iris dataset
 
+import matplotlib.pyplot as plt
 import pandas as pd
 
 # PANDA SETTINGS FOR PRETTIER TERMINAL
@@ -18,6 +19,22 @@ print("#2 get unique labels")
 print(unique_labels)
 
 #   3. plot with a scatter plot each iris flower sample colored by label (3 different colors)
+
+setosa = iris_data.loc[iris_data['Species'] == unique_labels[0]]
+versicolor = iris_data.loc[iris_data['Species'] == unique_labels[1]]
+virginica = iris_data.loc[iris_data['Species'] == unique_labels[2]]
+
+
+plt.scatter(setosa['Sepal length'],
+            setosa['Sepal width'], c='b', label='Setosa')
+plt.scatter(versicolor['Sepal length'],
+            versicolor['Sepal width'], c='r', label='versicolor')
+plt.scatter(virginica['Sepal length'],
+            virginica['Sepal width'], c='g', label='virginica')
+# plt.gray() # To add greyscale.
+plt.legend(loc='upper left')
+plt.show()
+
 
 #   4. use: MeanShift and estimate_bandwidth from sklearn.cluster to first estimate bandwidth
 #           and then get the clusters (HINT: estimate_bandwidth() takes an argument: quantile set it to 0.2 for best result
