@@ -8,10 +8,14 @@ pd.options.display.max_rows = None
 
 #   1. load 'iris_data.csv' into a dataframe
 iris_data = pd.read_csv("iris_csv.csv")
-print("read_csv")
+print("#1 read_csv")
 print(iris_data.head())
 
 #   2. get unique labels (Species column)
+unique_labels = iris_data['Species'].unique()
+print()
+print("#2 get unique labels")
+print(unique_labels)
 
 #   3. plot with a scatter plot each iris flower sample colored by label (3 different colors)
 
