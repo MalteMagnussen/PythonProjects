@@ -13,3 +13,6 @@
 7. [Week 7](https://github.com/MalteMagnussen/PythonProjects/tree/master/week7/charmingReaction)
 8. [Week 8](https://github.com/MalteMagnussen/PythonProjects/tree/master/week8)
 9. [Week 9](https://github.com/MalteMagnussen/PythonProjects/tree/master/week9/exercise)
+10. [Week 10](https://github.com/MalteMagnussen/PythonProjects/tree/master/week10/Exercise)
+    - [Images generated](https://raw.githubusercontent.com/MalteMagnussen/PythonProjects/master/week10/Exercise/all.png) - Top left and top right are most correct I think. They're also the version kept in last commit version of code. 
+    - [Code](https://github.com/MalteMagnussen/PythonProjects/blob/master/week10/Exercise/iris.py)
