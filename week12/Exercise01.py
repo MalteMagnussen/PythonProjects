@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 with open("rodents.csv", "r") as f:
 
     df = pd.read_csv(f, sep=";")
+    print("Dataframe")
     print(df.head())
     # Splitting the data
     weightHeight = df.values[:, 0:2]
@@ -27,21 +28,71 @@ with open("rodents.csv", "r") as f:
     # print("\nWeight and Height\n", weightHeight)
     # print("\ntype of rodent\n", rodentType)
     # Make a new scatter plot with datapoints of weights vs heights. Choose different colors for rats and mice
-    def scatterplotRodents():
-        # Mice
-        mice = df.loc[df["type"] == "mouse"]
-        plt.scatter(mice["weight"], mice["height"], c="red")
-        # Rats
-        rats = df.loc[df["type"] == "rat"]
-        plt.scatter(rats["weight"], rats["height"], c="blue")
-        plt.xlabel("weight")
-        plt.ylabel("height")
-        plt.title("red is mice, blue is rats")
-        plt.show()
 
-    scatterplotRodents()
+    # Mice
+    mice = df.loc[df["type"] == "mouse"]
+    plt.scatter(mice["weight"], mice["height"], c="red", label="Mice")
+    # Rats
+    rats = df.loc[df["type"] == "rat"]
+    plt.scatter(rats["weight"], rats["height"], c="blue", label="Rats")
+    plt.xlabel("weight")
+    plt.ylabel("height")
+    plt.title("Rodents")
+    # Manually find the optimal linear function to divide the 2 groups (y = aX+b). Plot it on the scatter plot
+    x = np.linspace(0, 250, 1000)
+    # https://www.mathsisfun.com/equation_of_line.html
+    y = 0 * x + 9.9
+    plt.plot(x, y, "-r", label="Manual Perceptron")
+    plt.legend(loc="upper left")
+    # plt.grid()
+    # plt.show()
+    # What is the slope and intercept of the linear function?
+    # What is "Slope" and "intercept"?
+    # https://www.purplemath.com/modules/slopyint.htm
+    # So I guess the slope is "flat" and the intercept is 9.9?
+    # Now change the 'type' column to represent rats as 1 and mice as -1
+    def ratOrMice(rodent):
+        # Why did I make this?
+        if rodent == "rat":
+            return 1
+        else:
+            return -1
 
+    df["type"].replace("rat", 1, inplace=True)
+    df["type"].replace("mouse", -1, inplace=True)
+    print("Replaced Head")
+    print(df.head())
+    df.dropna(
+        axis=0
+    )  # 0 = Row , 1 = column, so this means, drop all rows which contains a null value
 
+    def perceptron(input, weights):
+        dot_product = np.dot(input, weights)
+        return ratOrMice(dot_product)
+
+    # Use these weights herè [40,-190] to determine if the following 3 animals are mice or rats:
+
+    taskSix = [
+        [231.32446731816555, 26.03382997978225],
+        [17.906954059999567, 6.846576762459397],
+        [230.276522831171, 24.077799766119398],
+    ]
+
+    sixWeights = [40, -190]
+    for rodent in taskSix:
+        print("")
+        print("Rat == 1")
+        print("Mice == -1")
+        print("New Rodent:")
+        print(rodent)
+        print("Is it a Mouse or Rat?")
+        print(perceptron(rodent, sixWeights))
+
+    # Find the (approximately) optimal weights using the perceptron learning algorithm
+    # Plot the weightline
+    # Plot the division line
+
+# ? ? ?? ?
 def activation_function(x):
     """
     Step function to respond with y = 1 or -1
@@ -56,9 +107,9 @@ def activation_function(x):
 
 
 rnge = np.linspace(-5.5, 5.5, num=23)
-print("rnge:", rnge)
+# print("rnge:", rnge)
 values = [activation_function(i) for i in rnge]
-print("values: ", values)
+# print("values: ", values)
 # plt.plot(values)
 # plt.axis([-10, 9, -2, 2])
 # plt.show()
