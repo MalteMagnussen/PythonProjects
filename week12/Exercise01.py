@@ -40,9 +40,10 @@ def activation_function(x):
         return 1
 
 
-rnge = np.linspace(-10.0, 10.0, num=1000)
-print(rnge[0:5])
+rnge = np.linspace(-5.5, 5.5, num=23)
+print("rnge:", rnge)
 values = [activation_function(i) for i in rnge]
-plt.plot(rnge, values)
-plt.axis([-10, 9, -2, 2])
+print("values: ", values)
+plt.plot(values)
+# plt.axis([-10, 9, -2, 2])
 plt.show()
